@@ -14,6 +14,7 @@ import {
   SiGithub,
   SiMongodb,
   SiLinux,
+  SiRedux,
 } from "react-icons/si";
 
 import { SkillCard, SkillsWrapper } from "./style";
@@ -39,6 +40,10 @@ const skillsList = [
   {
     name: "React",
     icon: <SiReact />,
+  },
+  {
+    name: "Redux",
+    icon: <SiRedux />,
   },
   {
     name: "Node.js",

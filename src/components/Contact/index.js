@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import emailjs from "emailjs-com";
 import {
   UiButton,
   UiHeading,
@@ -15,11 +16,7 @@ const Contact = () => {
     email: "",
     message: "",
   });
-
-  const submitForm = (e) => {
-    e.preventDefault();
-    console.log(contactData);
-  };
+  const [loading, setLoading] = useState(false);
 
   const onChangeFormData = (e) => {
     const { name, value } = e.target;
@@ -35,6 +32,35 @@ const Contact = () => {
       email: "",
       message: "",
     });
+  };
+  const submitForm = (e) => {
+    e.preventDefault();
+
+    setLoading(true);
+    emailjs
+      .send(
+        process.env.REACT_APP_SERVICE_ID,
+        process.env.REACT_APP_TEMPLATE_ID,
+        {
+          from_name: contactData.name,
+          from_email: contactData.email,
+          message: contactData.message,
+        },
+        process.env.REACT_APP_PUBLIC_KEY
+      )
+      .then(
+        (result) => {
+          console.log("Email sent successfully:", result.text);
+          resetForm();
+          setLoading(false);
+          alert("Your message has been sent successfully!");
+        },
+        (error) => {
+          setLoading(false);
+          console.error("Error sending email:", error.text);
+          alert("Failed to send your message. Please try again later.");
+        }
+      );
   };
 
   return (
@@ -74,8 +100,12 @@ const Contact = () => {
           required
         />
         <div>
-          <UiButton type="reset">Clear</UiButton>
-          <UiButton type="submit">Submit</UiButton>
+          <UiButton type="reset" disabled={loading}>
+            Clear
+          </UiButton>
+          <UiButton type="submit" disabled={loading}>
+            {loading ? "Sending..." : "Submit"}
+          </UiButton>
         </div>
       </FormEl>
     </UiSection>

@@ -1,6 +1,6 @@
 import React from "react";
 import { Main, ProfileWrapper } from "./style";
-import myresume from "../../assets/resume/manikanta_pitla.pdf";
+import myresume from "../../assets/resume/manikanta_pitla_01.pdf";
 import { UiButton, UiPara } from "../../utils/uiMaterials";
 
 const Introduction = () => {

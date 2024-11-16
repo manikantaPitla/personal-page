@@ -34,7 +34,7 @@ function Home() {
           <Footer />
         </MiddleContentWrapper>
         <SideContentWrapper>
-          <p>manikantapitla81@gmail.com</p>
+          <p>pitlamanikanta81@gmail.com</p>
           <hr />
         </SideContentWrapper>
       </MainContentWrapper>
