@@ -52,16 +52,15 @@ const Contact = () => {
         (result) => {
           console.log("Email sent successfully:", result.text);
           resetForm();
+          setLoading(false);
           alert("Your message has been sent successfully!");
         },
         (error) => {
           console.error("Error sending email:", error.text);
+          setLoading(false);
           alert("Failed to send your message. Please try again later.");
         }
-      )
-      .finally(() => {
-        setLoading(false);
-      });
+      );
   };
 
   return (
