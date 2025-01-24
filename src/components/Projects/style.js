@@ -19,6 +19,7 @@ export const ProjectWrapper = styled.ul`
 `;
 
 export const ProjectItem = styled.li`
+  padding: 10px;
   /* flex-basis: 380px; */
   height: 230px;
 
@@ -32,9 +33,12 @@ export const ProjectItem = styled.li`
 
 export const ProjectHeader = styled.p`
   background-color: var(--text-glow);
-  padding: 5px;
+  width: fit-content;
+border-radius: 25px;
+  padding: 10px 15px;
   font-size: 12px;
   color: black;
+  font-weight: 500;
 `;
 
 export const ProjectDetailWrapper = styled.div`

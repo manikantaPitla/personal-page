@@ -16,6 +16,7 @@ import {
   SiLinux,
   SiRedux,
   SiFirebase,
+  SiTailwindcss
 } from "react-icons/si";
 
 import { SkillCard, SkillsWrapper } from "./style";
@@ -33,6 +34,10 @@ const skillsList = [
   {
     name: "Bootstrap",
     icon: <SiBootstrap />,
+  },
+  {
+    name: "TailwindCSS",
+    icon: <SiTailwindcss />,
   },
   {
     name: "JavaScript",

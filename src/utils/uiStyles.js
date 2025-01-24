@@ -15,6 +15,7 @@ export const ButtonEl = styled.button`
   outline: none;
   cursor: pointer;
   font-size: 14px;
+  font-weight: 500;
 
   @media screen and (max-width: 500px) {
     padding: 15px 20px;
