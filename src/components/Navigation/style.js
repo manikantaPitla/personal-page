@@ -11,6 +11,7 @@ export const Nav = styled.nav`
   width: 100%;
   background-color: rgba(255, 255, 255, 0.001);
   backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
   z-index: 100;
 
   .show-or-hide {
@@ -63,9 +64,9 @@ export const NavLinks = styled.ul`
     top: 100%;
     right: 10%;
     flex-direction: column;
-    background: rgba(255, 255, 255, 0.3);
-    backdrop-filter: blur(5px);
+    background-color: rgba(255, 255, 255, 0.3);
     -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
 
     li {
       padding: 15px 40px;

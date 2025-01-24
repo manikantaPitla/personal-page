@@ -7,6 +7,7 @@ import {
 } from "./style";
 import { UiHeading, UiSection } from "../../utils/uiMaterials";
 
+import weConnect from "../../assets/images/projects/we-connect.png";
 import pythonPatterns from "../../assets/images/projects/python-patterns.png";
 import tourismImg from "../../assets/images/projects/tourism.png";
 import weatherImg from "../../assets/images/projects/weather.png";
@@ -14,6 +15,12 @@ import bookHubImg from "../../assets/images/projects/book-hub.png";
 import { FiGithub, FiLink } from "react-icons/fi";
 
 const projectsList = [
+  {
+    projectName: "We Connect",
+    imageUrl: weConnect,
+    websiteUrl: "https://weconnectdev.netlify.app/",
+    githubLink: "https://github.com/manikantaPitla/we-connect",
+  },
   {
     projectName: "Book Hub",
     imageUrl: bookHubImg,

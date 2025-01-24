@@ -13,7 +13,7 @@ const About = () => {
         <ProfileImageWrapper>
           <img
             alt="my profile"
-            src="https://res.cloudinary.com/djkatupvr/image/upload/v1678466105/portfolio-images/mani-bg_kfawwl.png"
+            src="https://res.cloudinary.com/df9fyawpk/image/upload/v1737702912/1736956325847_nei12w.jpg"
           />
         </ProfileImageWrapper>
         <div>

@@ -37,7 +37,7 @@ export const ProfileImageWrapper = styled.div`
     filter: brightness(1.06) grayscale(0);
     transition: 0.4s;
     &:hover {
-      transform: scale(1.1) translateY(20px);
+      transform: scale(1.1);
     }
   }
 

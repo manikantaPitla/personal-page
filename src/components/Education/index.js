@@ -9,7 +9,7 @@ const eduList = [
     cgpa: "CGPA - 8.8",
   },
   {
-    name: "Bsc MPCS - SSR Degree College, Nizamabad",
+    name: "BSc Computer Science - SSR Degree College, Nizamabad",
     duration: "Jul 2019 - Jun 2022",
     cgpa: "CGPA - 7.48",
   },
