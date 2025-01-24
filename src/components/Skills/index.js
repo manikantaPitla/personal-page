@@ -15,6 +15,7 @@ import {
   SiMongodb,
   SiLinux,
   SiRedux,
+  SiFirebase,
 } from "react-icons/si";
 
 import { SkillCard, SkillsWrapper } from "./style";
@@ -64,6 +65,10 @@ const skillsList = [
   {
     name: "MongoDB",
     icon: <SiMongodb />,
+  },
+  {
+    name: "Firebase",
+    icon: <SiFirebase />,
   },
   {
     name: "Git",
