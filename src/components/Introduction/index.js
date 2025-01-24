@@ -1,6 +1,6 @@
 import React from "react";
 import { Main, ProfileWrapper } from "./style";
-import myresume from "../../assets/resume/manikanta_pitla_01.pdf";
+import myResume from "../../assets/resume/manikanta_pitla_.pdf";
 import { UiButton, UiPara } from "../../utils/uiMaterials";
 
 const Introduction = () => {
@@ -17,7 +17,7 @@ const Introduction = () => {
           growing in the field of web development.
         </UiPara>
         <div>
-          <a href={myresume} target="_blank" rel="noreferrer">
+          <a href={myResume} target="_blank" rel="noreferrer">
             <UiButton type="button">Check Resume</UiButton>
           </a>
         </div>

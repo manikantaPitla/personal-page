@@ -5,12 +5,7 @@ import { Footer } from "./style";
 const index = () => {
   return (
     <Footer as="footer">
-      <UiPara>Developed by Manikanta Pitla</UiPara>
-      <UiPara>
-        <strong>Technologies Used</strong>
-        <br />
-        React.js, styled-components
-      </UiPara>
+      <UiPara>Developed by Manikanta Pitla | Last updated on 24-01-2025</UiPara>
     </Footer>
   );
 };
