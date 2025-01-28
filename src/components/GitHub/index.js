@@ -1,10 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  UiButton,
-  UiHeading,
-  UiPara,
-  UiSection,
-} from "../../utils/uiMaterials";
+import { UiButton, UiHeading, UiSection } from "../../utils/uiMaterials";
 import {
   ButtonWrapper,
   GitProfileWrapper,
