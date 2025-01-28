@@ -52,7 +52,7 @@ const Projects = () => {
   return (
     <UiSection id="projects">
       <UiHeading>
-        <span>04.</span> Projects
+        <span>05.</span> Projects
       </UiHeading>
       <div>
         <ProjectWrapper>

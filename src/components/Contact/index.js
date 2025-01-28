@@ -66,7 +66,7 @@ const Contact = () => {
   return (
     <UiSection id="contact">
       <UiHeading>
-        <span>05. </span> Contact
+        <span>06. </span> Contact
       </UiHeading>
       <SocialLinkWrapper>
         <UiPara>Connect with me on</UiPara>

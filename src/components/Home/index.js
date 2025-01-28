@@ -13,6 +13,7 @@ import Introduction from "../Introduction";
 import Footer from "../Footer";
 import Contact from "../Contact";
 import SocialLinks from "../../utils/uiComponents/SocialLinks";
+import GitHub from "../GitHub";
 
 function Home() {
   return (
@@ -28,6 +29,7 @@ function Home() {
           <About />
           <Education />
           <Skills />
+          <GitHub />
           <Projects />
           <Contact />
           <hr />
