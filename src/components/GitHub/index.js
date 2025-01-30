@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { UiButton, UiHeading, UiSection } from "../../utils/uiMaterials";
 import {
   ButtonWrapper,
@@ -6,34 +6,79 @@ import {
   ProfileCard,
   ProfileWrapper,
 } from "./style";
+import { RingLoader } from "../../utils/uiComponents/Loaders";
+import Repository from "../Repository";
 
 const GitHub = () => {
-  const [profile, setProfileData] = useState([]);
+  const [data, setData] = useState({
+    profile: null,
+    repos: [],
+    loading: true,
+    error: null,
+  });
+  const [repoVisible, setRepoVisible] = useState(false);
 
-  useEffect(() => {
-    const fetchProfileData = async () => {
-      const response = await fetch(
+  const fetchData = useCallback(async (url) => {
+    try {
+      const response = await fetch(url, {
+        headers: {
+          Authorization: "token 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",
+        },
+      });
+      if (!response.ok) throw new Error(`Error: ${response.statusText}`);
+      return await response.json();
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  }, []);
+
+  const getProfileData = useCallback(async () => {
+    try {
+      const profile = await fetchData(
         "https://api.github.com/users/manikantaPitla"
       );
-      const user = await response.json();
-      console.log("Profile: ", user);
+      const repos = await fetchData(profile.repos_url);
 
-      const profile = {
-        username: user.login,
-        name: user.name,
-        bio: user.bio,
-        avatar: user.avatar_url,
-        repos: user.public_repos,
-        reposURL: user.repos_url,
-        createdAt: user.created_at,
-        updatedAt: user.updated_at,
-        profileURL: user.url,
-      };
+      // Fetch language stats for each repository
+      const reposWithLanguages = await Promise.all(
+        repos.map(async (repo) => {
+          const languages = await fetchData(repo.languages_url);
+          const totalBytes = Object.values(languages).reduce(
+            (acc, val) => acc + val,
+            0
+          );
 
-      setProfileData(profile);
-    };
-    fetchProfileData();
-  }, []);
+          // Convert to percentage
+          const languagePercentages = Object.entries(languages).map(
+            ([language, bytes]) => ({
+              language,
+              percentage: ((bytes / totalBytes) * 100).toFixed(2),
+            })
+          );
+
+          return { ...repo, languages: languagePercentages };
+        })
+      );
+
+      setData({
+        profile,
+        repos: reposWithLanguages,
+        loading: false,
+        error: null,
+      });
+    } catch (error) {
+      setData({
+        profile: null,
+        repos: [],
+        loading: false,
+        error: error.message,
+      });
+    }
+  }, [fetchData]);
+
+  useEffect(() => {
+    getProfileData();
+  }, [getProfileData]);
 
   return (
     <UiSection id="github">
@@ -42,23 +87,39 @@ const GitHub = () => {
         GitHub
       </UiHeading>
       <GitProfileWrapper>
-        <ProfileWrapper>
-          <ProfileCard>
-            <img src={profile.avatar} alt={profile.name} />
-            <div>
-              <h1>{profile.name}</h1>
-              <p>{profile.username}</p>
+        {data.loading ? (
+          <RingLoader />
+        ) : data.error ? (
+          <p>{data.error}</p>
+        ) : (
+          <ProfileWrapper>
+            <ProfileCard>
+              <img src={data.profile?.avatar_url} alt={data.profile?.name} />
               <div>
-                <p>{profile.bio}</p>
+                <div>
+                  <h1>{data.profile?.name}</h1>
+                  <p>@{data.profile?.login}</p>
+                </div>
+                <p>{data.profile?.bio}</p>
               </div>
-            </div>
-          </ProfileCard>
-          <ButtonWrapper>
-            <UiButton>Show Repos</UiButton>
-            <UiButton>Visit GitHub</UiButton>
-          </ButtonWrapper>
-        </ProfileWrapper>
-        {/* <pre>{JSON.stringify(profile, null, 2)}</pre> */}
+            </ProfileCard>
+            <ButtonWrapper>
+              <a href={data.profile?.html_url} target="_blank" rel="noreferrer">
+                <UiButton>Visit GitHub</UiButton>
+              </a>
+              <UiButton
+                type="button"
+                onClick={() => setRepoVisible((prev) => !prev)}
+              >
+                {repoVisible ? "Hide" : "Show"} Repos
+              </UiButton>
+            </ButtonWrapper>
+          </ProfileWrapper>
+        )}
+
+        {repoVisible && data.repos.length > 0 && (
+          <Repository repos={data.repos} />
+        )}
       </GitProfileWrapper>
     </UiSection>
   );

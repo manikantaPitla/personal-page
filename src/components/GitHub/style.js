@@ -6,6 +6,7 @@ export const GitProfileWrapper = styled.div`
   border-radius: 25px;
   padding: 20px;
   color: #000;
+  min-height: 208px;
 `;
 
 export const ProfileWrapper = styled.div`
@@ -23,6 +24,12 @@ export const ProfileCard = styled.div`
     height: 100px;
     width: 100px;
     border-radius: 50%;
+  }
+
+  div {
+    div {
+      margin-bottom: 10px;
+    }
   }
 
   @media screen and (max-width: 768px) {

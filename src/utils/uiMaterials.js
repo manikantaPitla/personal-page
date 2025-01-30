@@ -1,7 +1,7 @@
 import { ButtonEl, HeadingEl, InputEl, ParaEl, SectionEl } from "./uiStyles";
 
-export const UiButton = ({ children, type }) => (
-  <ButtonEl type={type}>{children}</ButtonEl>
+export const UiButton = ({ children, ...rest }) => (
+  <ButtonEl {...rest}>{children}</ButtonEl>
 );
 
 export const UiSection = ({ children, ...props }) => (

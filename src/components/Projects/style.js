@@ -22,6 +22,8 @@ export const ProjectItem = styled.li`
   padding: 10px;
   /* flex-basis: 380px; */
   height: 230px;
+  border-radius: 25px;
+  overflow: hidden;
 
   background-size: cover;
   position: relative;
