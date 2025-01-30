@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { UiButton, UiHeading, UiSection } from "../../utils/uiMaterials";
 import {
   ButtonWrapper,
@@ -9,7 +9,7 @@ import {
 import { RingLoader } from "../../utils/uiComponents/Loaders";
 import Repository from "../Repository";
 
-const GitHub = () => {
+const GitHub = ({ username = "manikantaPitla" }) => {
   const [data, setData] = useState({
     profile: null,
     repos: [],
@@ -18,41 +18,45 @@ const GitHub = () => {
   });
   const [repoVisible, setRepoVisible] = useState(false);
 
-  const fetchData = useCallback(async (url) => {
-    try {
-      const response = await fetch(url);
-      if (!response.ok) throw new Error(`Error: ${response.statusText}`);
-      return await response.json();
-    } catch (error) {
-      throw new Error(error.message);
-    }
-  }, []);
-
   const getProfileData = useCallback(async () => {
     try {
-      const profile = await fetchData(
-        "https://api.github.com/users/manikantaPitla"
-      );
-      const repos = await fetchData(profile.repos_url);
+      setData((prev) => ({ ...prev, loading: true }));
 
-      // Fetch language stats for each repository
+      const profileRes = await fetch(
+        `https://api.github.com/users/${username}`
+      );
+      if (!profileRes.ok) throw new Error("Failed to fetch profile");
+      const profile = await profileRes.json();
+
+      const reposRes = await fetch(profile.repos_url);
+      if (!reposRes.ok) throw new Error("Failed to fetch repositories");
+      const repos = await reposRes.json();
+
       const reposWithLanguages = await Promise.all(
         repos.map(async (repo) => {
-          const languages = await fetchData(repo.languages_url);
-          const totalBytes = Object.values(languages).reduce(
-            (acc, val) => acc + val,
-            0
-          );
+          try {
+            const langRes = await fetch(repo.languages_url);
+            if (!langRes.ok) throw new Error("Failed to fetch languages");
 
-          // Convert to percentage
-          const languagePercentages = Object.entries(languages).map(
-            ([language, bytes]) => ({
-              language,
-              percentage: ((bytes / totalBytes) * 100).toFixed(2),
-            })
-          );
+            const languages = await langRes.json();
+            const totalBytes = Object.values(languages).reduce(
+              (acc, val) => acc + val,
+              0
+            );
 
-          return { ...repo, languages: languagePercentages };
+            const languagePercentages = Object.entries(languages).map(
+              ([language, bytes]) => ({
+                language,
+                percentage: totalBytes
+                  ? ((bytes / totalBytes) * 100).toFixed(2)
+                  : "0",
+              })
+            );
+
+            return { ...repo, languages: languagePercentages };
+          } catch {
+            return { ...repo, languages: [] }; // Handle errors gracefully
+          }
         })
       );
 
@@ -63,14 +67,9 @@ const GitHub = () => {
         error: null,
       });
     } catch (error) {
-      setData({
-        profile: null,
-        repos: [],
-        loading: false,
-        error: error.message,
-      });
+      setData((prev) => ({ ...prev, loading: false, error: error.message }));
     }
-  }, [fetchData]);
+  }, [username]);
 
   useEffect(() => {
     getProfileData();
@@ -92,10 +91,8 @@ const GitHub = () => {
             <ProfileCard>
               <img src={data.profile?.avatar_url} alt={data.profile?.name} />
               <div>
-                <div>
-                  <h1>{data.profile?.name}</h1>
-                  <p>@{data.profile?.login}</p>
-                </div>
+                <h1>{data.profile?.name}</h1>
+                <p>@{data.profile?.login}</p>
                 <p>{data.profile?.bio}</p>
               </div>
             </ProfileCard>
