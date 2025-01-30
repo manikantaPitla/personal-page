@@ -47,7 +47,6 @@ const Repo = ({ repoData }) => {
     languages,
     homepage,
   } = repoData;
-  console.log(repoData);
 
   return (
     <RepoCard>

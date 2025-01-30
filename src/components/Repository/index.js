@@ -4,7 +4,6 @@ import { RepoContainer } from "./style";
 import Repo from "../Repo";
 
 const Repository = ({ repos }) => {
-  console.log("Repository: ", repos);
   return (
     <RepoContainer>
       <UiHeading>Repository</UiHeading>

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const RepoCard = styled.div`
+export const RepoCard = styled.li`
   border: 1px solid var(--text-secondary-light);
   border-radius: 15px;
   padding:15px 15px;

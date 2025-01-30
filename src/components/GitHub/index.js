@@ -2,6 +2,7 @@ import React, { useEffect, useState, useCallback } from "react";
 import { UiButton, UiHeading, UiSection } from "../../utils/uiMaterials";
 import {
   ButtonWrapper,
+  ErrorContainer,
   GitProfileWrapper,
   ProfileCard,
   ProfileWrapper,
@@ -20,11 +21,17 @@ const GitHub = ({ username = "manikantaPitla" }) => {
 
   const getProfileData = useCallback(async () => {
     try {
-      setData((prev) => ({ ...prev, loading: true }));
+      setData({ profile: null, repos: [], loading: true, error: null });
 
       const profileRes = await fetch(
-        `https://api.github.com/users/${username}`
+        `https://api.github.com/users/${username}`,
+        {
+          headers: {
+            Authorization: `token ${process.env.REACT_APP_GITHUB_TOKEN}`,
+          },
+        }
       );
+
       if (!profileRes.ok) throw new Error("Failed to fetch profile");
       const profile = await profileRes.json();
 
@@ -55,7 +62,7 @@ const GitHub = ({ username = "manikantaPitla" }) => {
 
             return { ...repo, languages: languagePercentages };
           } catch {
-            return { ...repo, languages: [] }; // Handle errors gracefully
+            return { ...repo, languages: [] };
           }
         })
       );
@@ -67,6 +74,7 @@ const GitHub = ({ username = "manikantaPitla" }) => {
         error: null,
       });
     } catch (error) {
+      console.log(error.message);
       setData((prev) => ({ ...prev, loading: false, error: error.message }));
     }
   }, [username]);
@@ -85,7 +93,10 @@ const GitHub = ({ username = "manikantaPitla" }) => {
         {data.loading ? (
           <RingLoader />
         ) : data.error ? (
-          <p>{data.error}</p>
+          <ErrorContainer>
+            <p>{data.error}</p>
+            <UiButton onClick={getProfileData}>Retry</UiButton>
+          </ErrorContainer>
         ) : (
           <ProfileWrapper>
             <ProfileCard>
