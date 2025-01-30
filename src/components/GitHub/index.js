@@ -20,11 +20,7 @@ const GitHub = () => {
 
   const fetchData = useCallback(async (url) => {
     try {
-      const response = await fetch(url, {
-        headers: {
-          Authorization: "token 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",
-        },
-      });
+      const response = await fetch(url);
       if (!response.ok) throw new Error(`Error: ${response.statusText}`);
       return await response.json();
     } catch (error) {
