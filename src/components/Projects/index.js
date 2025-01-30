@@ -12,6 +12,7 @@ import pythonPatterns from "../../assets/images/projects/python-patterns.png";
 import tourismImg from "../../assets/images/projects/tourism.png";
 import weatherImg from "../../assets/images/projects/weather.png";
 import bookHubImg from "../../assets/images/projects/book-hub.png";
+import PersonalPageImg from "../../assets/images/projects/personal-page.png";
 import { FiGithub, FiLink } from "react-icons/fi";
 
 const projectsList = [
@@ -45,6 +46,12 @@ const projectsList = [
     imageUrl: weatherImg,
     websiteUrl: "https://manikantapitla.github.io/Weather-application/",
     githubLink: "https://github.com/manikantaPitla/Weather-application",
+  },
+  {
+    projectName: "Personal Portfolio",
+    imageUrl: PersonalPageImg,
+    websiteUrl: "https://manikantapitla.netlify.app/",
+    githubLink: "https://github.com/manikantaPitla/personal-page",
   },
 ];
 

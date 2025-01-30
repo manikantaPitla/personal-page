@@ -33,13 +33,18 @@ const Navigation = () => {
             </a>
           </li>
           <li>
+            <a href="#github">
+              <span>04.</span> GitHub
+            </a>
+          </li>
+          <li>
             <a href="#projects">
-              <span>04.</span> Projects
+              <span>05.</span> Projects
             </a>
           </li>
           <li>
             <a href="#contact">
-              <span>05.</span> Contact
+              <span>06.</span> Contact
             </a>
           </li>
         </NavLinks>

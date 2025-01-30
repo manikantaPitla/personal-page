@@ -24,7 +24,7 @@ export const ProjectItem = styled.li`
   height: 230px;
   border-radius: 25px;
   overflow: hidden;
-
+border: 1px solid var(--text-secondary);
   background-size: cover;
   position: relative;
 
