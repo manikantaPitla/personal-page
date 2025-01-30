@@ -26,13 +26,12 @@ const GitHub = ({ username = "manikantaPitla" }) => {
       const profileRes = await fetch(
         `https://api.github.com/users/${username}`,
         {
+          method: "GET",
           headers: {
             Authorization: `token ${process.env.REACT_APP_GITHUB_TOKEN}`,
           },
         }
       );
-
-      console.log("Auth", `token ${process.env.REACT_APP_GITHUB_TOKEN}`);
 
       if (!profileRes.ok) throw new Error("Failed to fetch profile");
       const profile = await profileRes.json();
