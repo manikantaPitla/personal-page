@@ -3,11 +3,10 @@ import styled from "styled-components";
 export const RepoCard = styled.li`
   border: 1px solid var(--text-secondary-light);
   border-radius: 15px;
-  padding:15px 15px;
-
+  padding: 15px 15px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
 `;
 
 export const RepoName = styled.h4`
@@ -39,7 +38,6 @@ export const LanguageList = styled.div`
   flex-wrap: wrap;
   flex-direction: row;
   gap: 15px;
-  /* justify-content: space-between; */
 `;
 
 export const LanguageBar = styled.div`
@@ -83,7 +81,6 @@ export const CustomButton = styled.button`
 `;
 
 export const CustomBadge = styled.div`
-  /* background-color: var(--text-secondary-light); */
   border: 1px solid var(--text-secondary-light);
   padding: 5px 10px;
   border-radius: 10px;

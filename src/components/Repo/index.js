@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import {
   CustomBadge,
   CustomButton,
@@ -12,8 +12,9 @@ import {
   LanguagePercentageItem,
 } from "./style";
 import { IconExport } from "../../utils/uiComponents/Icons";
+import useFetchData from "../../hooks/useFetchData";
+import { LineLoader } from "../../utils/uiComponents/Loaders";
 
-// Define GitHub language colors
 const languageColors = {
   JavaScript: "#f1e05a",
   Python: "#3572A5",
@@ -37,6 +38,8 @@ const languageColors = {
   SASS: "#a53b70",
 };
 
+const getLanguageColor = (language) => languageColors[language] || "#ccc";
+
 const Repo = ({ repoData }) => {
   const {
     name,
@@ -44,9 +47,21 @@ const Repo = ({ repoData }) => {
     visibility,
     html_url,
     default_branch,
-    languages,
     homepage,
+    languages_url,
   } = repoData;
+  const { data: languages = {}, loading, error } = useFetchData(languages_url);
+
+  const languagePercentages = useMemo(() => {
+    const totalBytes = Object.values(languages).reduce(
+      (acc, val) => acc + val,
+      0
+    );
+    return Object.entries(languages).map(([language, bytes]) => ({
+      language,
+      percentage: totalBytes ? ((bytes / totalBytes) * 100).toFixed(2) : "0",
+    }));
+  }, [languages]);
 
   return (
     <RepoCard>
@@ -73,34 +88,48 @@ const Repo = ({ repoData }) => {
           )}
         </div>
 
-        <LanguageBar>
-          {languages.map(({ language, percentage }) => (
-            <span
-              key={language}
-              style={{
-                width: `${percentage}%`,
-                backgroundColor: languageColors[language] || "#ccc",
-              }}
-            />
-          ))}
-        </LanguageBar>
+        {loading ? (
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            <LineLoader />
+          </div>
+        ) : (
+          <>
+            {languagePercentages.length > 0 && (
+              <>
+                <LanguageBar>
+                  {languagePercentages.map(({ language, percentage }) => (
+                    <span
+                      key={language}
+                      style={{
+                        width: `${percentage}%`,
+                        backgroundColor: getLanguageColor(language),
+                      }}
+                    />
+                  ))}
+                </LanguageBar>
 
-        {languages.length > 0 && (
-          <LanguageList>
-            {languages.map(({ language, percentage }) => (
-              <LanguagePercentageItem key={language}>
-                <p
-                  className="language-bullet"
-                  style={{
-                    backgroundColor: languageColors[language] || "#ccc",
-                  }}
-                ></p>
-                <p>
-                  {language}: {percentage}%
-                </p>
-              </LanguagePercentageItem>
-            ))}
-          </LanguageList>
+                <LanguageList>
+                  {languagePercentages.map(({ language, percentage }) => (
+                    <LanguagePercentageItem key={language}>
+                      <p
+                        className="language-bullet"
+                        style={{ backgroundColor: getLanguageColor(language) }}
+                      ></p>
+                      <p>
+                        {language}: {percentage}%
+                      </p>
+                    </LanguagePercentageItem>
+                  ))}
+                </LanguageList>
+              </>
+            )}
+
+            {error && (
+              <div>
+                <RepoFullName>{error}</RepoFullName>
+              </div>
+            )}
+          </>
         )}
       </RepoBottomFlex>
     </RepoCard>

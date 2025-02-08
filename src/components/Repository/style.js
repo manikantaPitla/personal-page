@@ -16,3 +16,20 @@ export const RepoContainer = styled.div`
     }
   }
 `;
+
+export const ErrorContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-direction: column;
+
+  button {
+    width: fit-content;
+    padding: 10px 20px;
+  }
+
+  p {
+    font-size: 14px;
+  }
+`;
+

@@ -11,6 +11,8 @@ import { FormEl, SocialLinkWrapper } from "./style";
 import SocialLinks from "../../utils/uiComponents/SocialLinks";
 
 const Contact = () => {
+  console.log("Contact");
+
   const [contactData, setContactData] = useState({
     name: "",
     email: "",

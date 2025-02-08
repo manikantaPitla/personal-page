@@ -90,6 +90,8 @@ const skillsList = [
 ];
 
 const Skills = () => {
+    console.log("Skills");
+
   return (
     <UiSection id="skills">
       <UiHeading>

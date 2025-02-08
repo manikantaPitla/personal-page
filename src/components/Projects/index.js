@@ -56,6 +56,8 @@ const projectsList = [
 ];
 
 const Projects = () => {
+  console.log("Projects");
+
   return (
     <UiSection id="projects">
       <UiHeading>

@@ -3,6 +3,8 @@ import { ProfileContentWrapper, ProfileImageWrapper } from "./style";
 import { UiHeading, UiPara, UiSection } from "../../utils/uiMaterials";
 
 const About = () => {
+  console.log("About");
+
   return (
     <UiSection id="about">
       <UiHeading>

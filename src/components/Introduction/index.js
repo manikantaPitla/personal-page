@@ -4,6 +4,7 @@ import myResume from "../../assets/resume/manikanta_pitla_.pdf";
 import { UiButton, UiPara } from "../../utils/uiMaterials";
 
 const Introduction = () => {
+  console.log("Introduction");
   return (
     <Main>
       <ProfileWrapper>
