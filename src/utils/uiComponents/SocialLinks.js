@@ -13,12 +13,12 @@ const SocialLinks = () => {
     {
       name: "LinkedIn",
       icon: <FiLinkedin />,
-      link: "https://www.linkedin.com/in/manikantapitla/",
+      link: "https://linkedin.com/in/manikantapitla/",
     },
     {
       name: "Instagram",
       icon: <FiInstagram />,
-      link: "https://www.instagram.com/mani_dynamic_/",
+      link: "https://instagram.com/mani_dynamic_/",
     },
   ];
 
