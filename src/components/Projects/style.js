@@ -2,9 +2,6 @@ import styled from "styled-components";
 
 export const ProjectWrapper = styled.ul`
   list-style: none;
-  /* display: flex;
-  flex-wrap: wrap;
-  gap: 10px; */
 
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -20,11 +17,10 @@ export const ProjectWrapper = styled.ul`
 
 export const ProjectItem = styled.li`
   padding: 10px;
-  /* flex-basis: 380px; */
   height: 230px;
   border-radius: 25px;
   overflow: hidden;
-border: 1px solid var(--text-secondary);
+  border: 1px solid var(--text-secondary);
   background-size: cover;
   position: relative;
 
@@ -36,7 +32,7 @@ border: 1px solid var(--text-secondary);
 export const ProjectHeader = styled.p`
   background-color: var(--text-glow);
   width: fit-content;
-border-radius: 25px;
+  border-radius: 25px;
   padding: 10px 15px;
   font-size: 12px;
   color: black;

@@ -7,12 +7,13 @@ import {
 } from "./style";
 import { UiHeading, UiSection } from "../../utils/uiMaterials";
 
-import weConnect from "../../assets/images/projects/we-connect.png";
-import pythonPatterns from "../../assets/images/projects/python-patterns.png";
-import tourismImg from "../../assets/images/projects/tourism.png";
-import weatherImg from "../../assets/images/projects/weather.png";
-import bookHubImg from "../../assets/images/projects/book-hub.png";
-import PersonalPageImg from "../../assets/images/projects/personal-page.png";
+import weConnect from "../../assets/images/projects/we-connect.webp";
+import pythonPatterns from "../../assets/images/projects/python-patterns.webp";
+import tourismImg from "../../assets/images/projects/tourism.webp";
+import weatherImg from "../../assets/images/projects/weather.webp";
+import bookHubImg from "../../assets/images/projects/book-hub.webp";
+import PersonalPageImg from "../../assets/images/projects/personal-page.webp";
+
 import { FiGithub, FiLink } from "react-icons/fi";
 
 const projectsList = [
@@ -56,8 +57,6 @@ const projectsList = [
 ];
 
 const Projects = () => {
-  console.log("Projects");
-
   return (
     <UiSection id="projects">
       <UiHeading>

@@ -16,7 +16,7 @@ import {
   SiLinux,
   SiRedux,
   SiFirebase,
-  SiTailwindcss
+  SiTailwindcss,
 } from "react-icons/si";
 
 import { SkillCard, SkillsWrapper } from "./style";
@@ -90,8 +90,6 @@ const skillsList = [
 ];
 
 const Skills = () => {
-    console.log("Skills");
-
   return (
     <UiSection id="skills">
       <UiHeading>

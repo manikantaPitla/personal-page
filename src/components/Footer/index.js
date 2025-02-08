@@ -1,13 +1,13 @@
 import React from "react";
 import { UiPara } from "../../utils/uiMaterials";
-import { Footer } from "./style";
+import { FooterContainer } from "./style";
 
-const index = () => {
+const Footer = () => {
   return (
-    <Footer as="footer">
-      <UiPara>Developed by Manikanta Pitla | Last updated on 30-01-2025</UiPara>
-    </Footer>
+    <FooterContainer as="footer">
+      <UiPara>Developed by Manikanta Pitla | Last updated on 09-02-2025</UiPara>
+    </FooterContainer>
   );
 };
 
-export default index;
+export default Footer;

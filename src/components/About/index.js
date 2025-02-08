@@ -1,10 +1,9 @@
 import React from "react";
 import { ProfileContentWrapper, ProfileImageWrapper } from "./style";
 import { UiHeading, UiPara, UiSection } from "../../utils/uiMaterials";
+import userImage from "../../assets/images/user/user_image.webp";
 
 const About = () => {
-  console.log("About");
-
   return (
     <UiSection id="about">
       <UiHeading>
@@ -14,9 +13,10 @@ const About = () => {
       <ProfileContentWrapper>
         <ProfileImageWrapper>
           <img
-            alt="my profile"
-            src="https://res.cloudinary.com/df9fyawpk/image/upload/v1737702912/1736956325847_nei12w.jpg"
+            alt="My Profile"
+            src={userImage}
             title="Manikanta Pitla"
+            loading="lazy"
           />
         </ProfileImageWrapper>
         <div>

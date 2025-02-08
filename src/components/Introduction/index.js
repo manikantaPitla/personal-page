@@ -1,10 +1,8 @@
 import React from "react";
 import { Main, ProfileWrapper } from "./style";
-import myResume from "../../assets/resume/manikanta_pitla_.pdf";
 import { UiButton, UiPara } from "../../utils/uiMaterials";
 
 const Introduction = () => {
-  console.log("Introduction");
   return (
     <Main>
       <ProfileWrapper>
@@ -18,7 +16,11 @@ const Introduction = () => {
           growing in the field of web development.
         </UiPara>
         <div>
-          <a href={myResume} target="_blank" rel="noreferrer">
+          <a
+            href="https://drive.google.com/file/d/1lP7vhs4KeDTS2DCh3LP7sk7PwuCPZH7B/view?usp=sharing"
+            target="_blank"
+            rel="noreferrer"
+          >
             <UiButton type="button">Check Resume</UiButton>
           </a>
         </div>

@@ -6,9 +6,7 @@ import useFetchData from "../../hooks/useFetchData";
 import { RingLoader } from "../../utils/uiComponents/Loaders";
 
 const Repository = ({ repoUrl }) => {
-  console.log("Repository URL:", repoUrl);
   const { data: repos, loading, error, refetch } = useFetchData(repoUrl);
-  console.log("repo", repos);
   return (
     <RepoContainer>
       <UiHeading>Repository</UiHeading>

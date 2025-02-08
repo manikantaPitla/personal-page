@@ -12,7 +12,6 @@ import Repository from "../Repository";
 import useFetchData from "../../hooks/useFetchData";
 
 const GitHub = () => {
-  console.log("GitHub");
   const [repoVisible, setRepoVisible] = useState(false);
 
   const {
@@ -43,6 +42,7 @@ const GitHub = () => {
                 src={profile?.avatar_url}
                 alt={profile?.name}
                 title={profile?.name}
+                loading="lazy"
               />
               <div>
                 <h3>{profile?.name}</h3>
