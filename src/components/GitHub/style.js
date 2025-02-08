@@ -44,7 +44,7 @@ export const ProfileCard = styled.div`
     }
   }
 
-  h1 {
+  h3 {
     font-size: 20px;
   }
 

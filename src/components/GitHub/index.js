@@ -101,9 +101,13 @@ const GitHub = ({ username = "manikantaPitla" }) => {
         ) : (
           <ProfileWrapper>
             <ProfileCard>
-              <img src={data.profile?.avatar_url} alt={data.profile?.name} />
+              <img
+                src={data.profile?.avatar_url}
+                alt={data.profile?.name}
+                title={data.profile?.name}
+              />
               <div>
-                <h1>{data.profile?.name}</h1>
+                <h3>{data.profile?.name}</h3>
                 <p>@{data.profile?.login}</p>
                 <p>{data.profile?.bio}</p>
               </div>

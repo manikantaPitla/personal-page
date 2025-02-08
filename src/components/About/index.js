@@ -14,6 +14,7 @@ const About = () => {
           <img
             alt="my profile"
             src="https://res.cloudinary.com/df9fyawpk/image/upload/v1737702912/1736956325847_nei12w.jpg"
+            title="Manikanta Pitla"
           />
         </ProfileImageWrapper>
         <div>
