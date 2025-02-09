@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { UiPara } from "../../utils/uiMaterials";
 
 export const EduContent = styled.div`
   display: flex;
@@ -60,8 +59,14 @@ export const EduItem = styled.li`
   }
 `;
 
-export const EduPara = styled(UiPara)`
+export const EduPara = styled.p`
   line-height: normal;
-  margin-bottom: 8px;
   text-align: inherit;
+  margin-bottom: 5px;
+  font-size: 16px;
+
+  @media screen and (max-width: 500px) {
+    font-size: 14px;
+    line-height: 22px;
+  }
 `;

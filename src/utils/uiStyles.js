@@ -22,8 +22,6 @@ export const ButtonEl = styled.button`
   }
 `;
 
-
-
 export const HeadingEl = styled.h2`
   font-size: 24px;
   margin-bottom: 20px;
