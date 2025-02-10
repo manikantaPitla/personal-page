@@ -4,7 +4,7 @@ import { UiButton, UiPara } from "../../utils/uiMaterials";
 
 const Introduction = () => {
   return (
-    <Main>
+    <Main id="introduction">
       <ProfileWrapper>
         <UiPara>Hi, my name is</UiPara>
         <UserTitle>Manikanta Pitla</UserTitle>
