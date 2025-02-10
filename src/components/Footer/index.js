@@ -5,7 +5,7 @@ import { FooterContainer } from "./style";
 const Footer = () => {
   return (
     <FooterContainer as="footer">
-      <UiPara>Developed by Manikanta Pitla | Last updated on 09-02-2025</UiPara>
+      <UiPara>Developed by Manikanta Pitla | Last updated on 10-02-2025</UiPara>
     </FooterContainer>
   );
 };

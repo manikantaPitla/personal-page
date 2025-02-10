@@ -1,5 +1,5 @@
 import React from "react";
-import { Main, ProfileWrapper } from "./style";
+import { Main, ProfileWrapper, UserTitle } from "./style";
 import { UiButton, UiPara } from "../../utils/uiMaterials";
 
 const Introduction = () => {
@@ -7,7 +7,7 @@ const Introduction = () => {
     <Main>
       <ProfileWrapper>
         <UiPara>Hi, my name is</UiPara>
-        <h1>Manikanta Pitla</h1>
+        <UserTitle>Manikanta Pitla</UserTitle>
 
         <UiPara>
           An enthusiastic Full Stack Developer with a strong foundation in both

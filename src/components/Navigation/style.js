@@ -2,9 +2,6 @@ import styled from "styled-components";
 
 export const Nav = styled.nav`
   padding: 15px 40px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   position: absolute;
   top: 0;
   left: 0;
@@ -13,11 +10,18 @@ export const Nav = styled.nav`
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
   z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
   .show-or-hide {
     height: 300px;
     transition: height 0.4s ease, padding 0.4s ease;
     padding: 10px 0;
+  }
+
+  .active {
+    color: var(--text-glow);
   }
 `;
 

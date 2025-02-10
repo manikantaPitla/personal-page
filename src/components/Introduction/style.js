@@ -15,20 +15,16 @@ export const ProfileWrapper = styled.div`
   p:nth-child(1) {
     color: var(--text-glow);
   }
+`;
 
-  h1 {
-    font-size: 32px;
-    margin-bottom: 20px;
-  }
+export const UserTitle = styled.h1`
+  font-size: 32px;
+  margin-bottom: 20px;
 
   @media screen and (min-width: 768px) {
-    h1 {
-      font-size: 42px;
-    }
+    font-size: 42px;
   }
   @media screen and (min-width: 1200px) {
-    h1 {
-      font-size: 62px;
-    }
+    font-size: 62px;
   }
 `;
