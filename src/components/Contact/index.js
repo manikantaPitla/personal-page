@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import emailjs from "emailjs-com";
+import { toast } from "react-hot-toast";
 import {
   UiButton,
   UiHeading,
@@ -33,34 +34,29 @@ const Contact = () => {
       message: "",
     });
   };
-  const submitForm = (e) => {
-    e.preventDefault();
 
+  const submitForm = async (e) => {
+    e.preventDefault();
     setLoading(true);
-    emailjs
-      .send(
-        process.env.REACT_APP_SERVICE_ID,
-        process.env.REACT_APP_TEMPLATE_ID,
-        {
-          from_name: contactData.name,
-          from_email: contactData.email,
-          message: contactData.message,
-        },
-        process.env.REACT_APP_PUBLIC_KEY
-      )
-      .then(
-        (result) => {
-          console.log("Email sent successfully:", result.text);
-          resetForm();
-          setLoading(false);
-          alert("Your message has been sent successfully!");
-        },
-        (error) => {
-          console.error("Error sending email:", error.text);
-          setLoading(false);
-          alert("Failed to send your message. Please try again later.");
-        }
-      );
+
+    const emailPromise = emailjs.send(
+      process.env.REACT_APP_SERVICE_ID,
+      process.env.REACT_APP_TEMPLATE_ID,
+      {
+        from_name: contactData.name,
+        from_email: contactData.email,
+        message: contactData.message,
+      },
+      process.env.REACT_APP_PUBLIC_KEY
+    );
+
+    await toast.promise(emailPromise, {
+      loading: "Sending your message...",
+      success: "Your message has been sent successfully!",
+      error: "Failed to send your message. Please try again later.",
+    });
+
+    emailPromise.then(() => resetForm()).finally(() => setLoading(false));
   };
 
   return (
