@@ -15,9 +15,11 @@ export const Nav = styled.nav`
   align-items: center;
 
   .show-or-hide {
+    background-color: var(--bg-primary);
     height: 300px;
     transition: height 0.4s ease, padding 0.4s ease;
     padding: 10px 0;
+    border: 1px solid var(--text-glow);
   }
 
   .active {
@@ -68,9 +70,9 @@ export const NavLinks = styled.ul`
     top: 100%;
     right: 10%;
     flex-direction: column;
-    background-color: rgba(255, 255, 255, 0.4);
-    -webkit-backdrop-filter: blur(5px);
-    backdrop-filter: blur(8px);
+    /* -webkit-backdrop-filter: blur(5px); */
+    /* background-color: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(8px); */
     border-radius: 20px;
 
     li {
