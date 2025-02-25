@@ -64,6 +64,11 @@ export const EduPara = styled.p`
   text-align: inherit;
   margin-bottom: 5px;
   font-size: 16px;
+  color: var(--text-secondary);
+
+  &.edu-title{
+    color: #fff;
+  }
 
   @media screen and (max-width: 500px) {
     font-size: 14px;

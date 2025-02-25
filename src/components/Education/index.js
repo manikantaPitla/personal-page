@@ -40,7 +40,7 @@ const Education = () => {
             return (
               <EduItem key={index}>
                 <div>
-                  <EduPara>{name}</EduPara>
+                  <EduPara className="edu-title">{name}</EduPara>
                   <EduPara>{duration}</EduPara>
                   <EduPara>{cgpa}</EduPara>
                 </div>

@@ -7,8 +7,8 @@ import {
   UiPara,
   UiSection,
 } from "../../utils/uiMaterials";
-import { FormEl, SocialLinkWrapper } from "./style";
-import SocialLinks from "../../utils/uiComponents/SocialLinks";
+import { ContactFlex, FormEl, SocialLinkWrapper } from "./style";
+import SocialLinks from "../../components/SocialLinks";
 
 const Contact = () => {
   const [contactData, setContactData] = useState({
@@ -68,46 +68,48 @@ const Contact = () => {
       <UiHeading>
         <span>06. </span> Contact
       </UiHeading>
-      <SocialLinkWrapper>
-        <UiPara>Connect with me on</UiPara>
-        <div>
-          <SocialLinks />
-        </div>
-      </SocialLinkWrapper>
-      <FormEl onSubmit={submitForm} onReset={resetForm}>
-        <UiInput
-          type="text"
-          placeholder="Your Name"
-          name="name"
-          value={contactData.name}
-          onChange={onChangeFormData}
-          required
-        />
-        <UiInput
-          type="email"
-          placeholder="Your Email"
-          name="email"
-          value={contactData.email}
-          onChange={onChangeFormData}
-          required
-        />
-        <UiInput
-          type="text"
-          placeholder="Your Message"
-          name="message"
-          value={contactData.message}
-          onChange={onChangeFormData}
-          required
-        />
-        <div>
-          <UiButton type="reset" disabled={loading}>
-            Clear
-          </UiButton>
-          <UiButton type="submit" disabled={loading}>
-            {loading ? "Sending..." : "Submit"}
-          </UiButton>
-        </div>
-      </FormEl>
+      <ContactFlex>
+        <FormEl onSubmit={submitForm} onReset={resetForm}>
+          <UiInput
+            type="text"
+            placeholder="Your Name"
+            name="name"
+            value={contactData.name}
+            onChange={onChangeFormData}
+            required
+          />
+          <UiInput
+            type="email"
+            placeholder="Your Email"
+            name="email"
+            value={contactData.email}
+            onChange={onChangeFormData}
+            required
+          />
+          <UiInput
+            type="text"
+            placeholder="Your Message"
+            name="message"
+            value={contactData.message}
+            onChange={onChangeFormData}
+            required
+          />
+          <div>
+            <UiButton type="reset" disabled={loading}>
+              Clear
+            </UiButton>
+            <UiButton type="submit" disabled={loading}>
+              {loading ? "Sending..." : "Submit"}
+            </UiButton>
+          </div>
+        </FormEl>
+        <SocialLinkWrapper>
+          <UiPara>Connect with me on</UiPara>
+          <div>
+            <SocialLinks isrender={true} />
+          </div>
+        </SocialLinkWrapper>
+      </ContactFlex>
     </UiSection>
   );
 };

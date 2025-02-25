@@ -13,7 +13,7 @@ import Projects from "../Projects";
 import Introduction from "../Introduction";
 import Footer from "../Footer";
 import Contact from "../Contact";
-import SocialLinks from "../../utils/uiComponents/SocialLinks";
+import SocialLinks from "../../components/SocialLinks";
 import GitHub from "../GitHub";
 
 const fadeInVariants = {
