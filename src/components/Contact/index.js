@@ -35,8 +35,31 @@ const Contact = () => {
     });
   };
 
+  const validateForm = () => {
+    const { name, email, message } = contactData;
+
+    if (!name) {
+      toast.error("Please enter your Name");
+      return false;
+    }
+
+    if (!email) {
+      toast.error("Email is Required!");
+      return false;
+    }
+
+    if (!message) {
+      toast.error("Message is Required!");
+      return false;
+    }
+
+    return true;
+  };
+
   const submitForm = async (e) => {
     e.preventDefault();
+
+    if (!validateForm()) return;
     setLoading(true);
 
     const emailPromise = emailjs.send(
@@ -72,7 +95,6 @@ const Contact = () => {
             name="name"
             value={contactData.name}
             onChange={onChangeFormData}
-            required
           />
           <UiInput
             type="email"
@@ -80,7 +102,6 @@ const Contact = () => {
             name="email"
             value={contactData.email}
             onChange={onChangeFormData}
-            required
           />
           <UiInput
             type="text"
@@ -88,7 +109,6 @@ const Contact = () => {
             name="message"
             value={contactData.message}
             onChange={onChangeFormData}
-            required
           />
           <div>
             <UiButton type="reset" disabled={loading}>
