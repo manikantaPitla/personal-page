@@ -1,0 +1,37 @@
+/* Global Styles */
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
+  font-family: "Fira Mono", monospace;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+hr {
+  background-color: var(--text-secondary);
+  border-color: var(--text-secondary);
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: #fff;
+  font-optical-sizing: auto;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+}
+
+.App {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  position: relative;
+}

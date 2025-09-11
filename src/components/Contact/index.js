@@ -1,15 +1,11 @@
 import React, { useState } from "react";
 import emailjs from "emailjs-com";
 import { toast } from "react-hot-toast";
-import {
-  UiButton,
-  UiHeading,
-  UiInput,
-  UiPara,
-  UiSection,
-} from "../../utils/uiMaterials";
+import { UiButton, UiHeading, UiInput, UiPara, UiSection } from "../../utils/uiMaterials";
 import { ContactFlex, FormEl, SocialLinkWrapper } from "./style";
 import SocialLinks from "../../components/SocialLinks";
+import { EMAIL_CONFIG, EMAIL_MESSAGES } from "../../constants/emailConstants";
+import { SECTION_HEADINGS } from "../../constants/navigationConstants";
 
 const Contact = () => {
   const [contactData, setContactData] = useState({
@@ -39,17 +35,17 @@ const Contact = () => {
     const { name, email, message } = contactData;
 
     if (!name) {
-      toast.error("Please enter your Name");
+      toast.error(EMAIL_MESSAGES.VALIDATION.NAME_REQUIRED);
       return false;
     }
 
     if (!email) {
-      toast.error("Email is Required!");
+      toast.error(EMAIL_MESSAGES.VALIDATION.EMAIL_REQUIRED);
       return false;
     }
 
     if (!message) {
-      toast.error("Message is Required!");
+      toast.error(EMAIL_MESSAGES.VALIDATION.MESSAGE_REQUIRED);
       return false;
     }
 
@@ -63,20 +59,20 @@ const Contact = () => {
     setLoading(true);
 
     const emailPromise = emailjs.send(
-      process.env.REACT_APP_SERVICE_ID,
-      process.env.REACT_APP_TEMPLATE_ID,
+      EMAIL_CONFIG.SERVICE_ID,
+      EMAIL_CONFIG.TEMPLATE_ID,
       {
         from_name: contactData.name,
         from_email: contactData.email,
         message: contactData.message,
       },
-      process.env.REACT_APP_PUBLIC_KEY
+      EMAIL_CONFIG.PUBLIC_KEY
     );
 
     await toast.promise(emailPromise, {
-      loading: "Sending your message...",
-      success: "Your message has been sent successfully!",
-      error: "Failed to send your message. Please try again later.",
+      loading: EMAIL_MESSAGES.LOADING,
+      success: EMAIL_MESSAGES.SUCCESS,
+      error: EMAIL_MESSAGES.ERROR,
     });
 
     emailPromise.then(() => resetForm()).finally(() => setLoading(false));
@@ -85,31 +81,13 @@ const Contact = () => {
   return (
     <UiSection id="contact">
       <UiHeading>
-        <span>06. </span> Contact
+        <span>{SECTION_HEADINGS.contact.split(".")[0]}. </span> Contact
       </UiHeading>
       <ContactFlex>
         <FormEl onSubmit={submitForm} onReset={resetForm}>
-          <UiInput
-            type="text"
-            placeholder="Your Name"
-            name="name"
-            value={contactData.name}
-            onChange={onChangeFormData}
-          />
-          <UiInput
-            type="email"
-            placeholder="Your Email"
-            name="email"
-            value={contactData.email}
-            onChange={onChangeFormData}
-          />
-          <UiInput
-            type="text"
-            placeholder="Your Message"
-            name="message"
-            value={contactData.message}
-            onChange={onChangeFormData}
-          />
+          <UiInput type="text" placeholder="Your Name" name="name" value={contactData.name} onChange={onChangeFormData} />
+          <UiInput type="email" placeholder="Your Email" name="email" value={contactData.email} onChange={onChangeFormData} />
+          <UiInput type="text" placeholder="Your Message" name="message" value={contactData.message} onChange={onChangeFormData} />
           <div>
             <UiButton type="reset" disabled={loading}>
               Clear

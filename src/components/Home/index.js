@@ -1,11 +1,6 @@
-import React, { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import React from "react";
 import Navigation from "../Navigation";
-import {
-  MainContentWrapper,
-  MiddleContentWrapper,
-  SideContentWrapper,
-} from "./style";
+import { MainContentWrapper, MiddleContentWrapper, SideContentWrapper } from "./style";
 import About from "../About";
 import Skills from "../Skills";
 import Education from "../Education";
@@ -15,31 +10,8 @@ import Footer from "../Footer";
 import Contact from "../Contact";
 import SocialLinks from "../../components/SocialLinks";
 import GitHub from "../GitHub";
-
-const fadeInVariants = {
-  hidden: { opacity: 0, y: 50 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.8, ease: "easeOut" },
-  },
-};
-
-const SectionWrapper = ({ children }) => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { threshold: 0.5, triggerOnce: true });
-
-  return (
-    <motion.div
-      ref={ref}
-      variants={fadeInVariants}
-      initial="hidden"
-      animate={isInView ? "visible" : "hidden"}
-    >
-      {children}
-    </motion.div>
-  );
-};
+import { SectionWrapper } from "../../animations/fadeInAnimation";
+import { PROFILE_DATA } from "../../constants/profileData";
 
 function Home() {
   return (
@@ -79,7 +51,7 @@ function Home() {
         </MiddleContentWrapper>
 
         <SideContentWrapper>
-          <p>pitlamanikanta81@gmail.com</p>
+          <p>{PROFILE_DATA.email}</p>
           <hr />
         </SideContentWrapper>
       </MainContentWrapper>

@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
+import { API_HEADERS } from "../constants/apiConstants";
 
 function useFetchData(url) {
   const [data, setData] = useState([]);
@@ -10,19 +11,44 @@ function useFetchData(url) {
       setLoading(true);
       setError(null);
 
+      // Check if online before making the request
+      if (!navigator.onLine) {
+        throw new Error("Network Error: No internet connection");
+      }
+
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 second timeout
+
       const response = await fetch(url, {
         method: "GET",
-        headers: {
-          Authorization: `token ${process.env.REACT_APP_GITHUB_TOKEN}`,
-        },
+        headers: API_HEADERS,
+        signal: controller.signal,
       });
 
-      if (!response.ok) throw new Error("Failed to fetch data");
-      const result = await response.json();
+      clearTimeout(timeoutId);
 
+      if (!response.ok) {
+        if (response.status === 0) {
+          throw new Error("Network Error: Unable to connect to server");
+        }
+        throw new Error(`API Error: ${response.status} ${response.statusText}`);
+      }
+
+      const result = await response.json();
       setData(result);
     } catch (err) {
-      setError(err.message);
+      let errorMessage = err.message;
+
+      // Handle specific error types
+      if (err.name === "AbortError") {
+        errorMessage = "Network Error: Request timed out";
+      } else if (err.name === "TypeError" && err.message.includes("fetch")) {
+        errorMessage = "Network Error: Unable to connect to the internet";
+      } else if (!navigator.onLine) {
+        errorMessage = "Network Error: No internet connection";
+      }
+
+      setError(errorMessage);
     } finally {
       setLoading(false);
     }

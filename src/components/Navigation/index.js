@@ -1,16 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import { HamburgerMenu, Logo, Nav, NavLinks } from "./style";
 import MenuBar from "../../utils/customMenuBar/MenuBar";
-
-const sections = [
-  "introduction",
-  "about",
-  "education",
-  "skills",
-  "github",
-  "projects",
-  "contact",
-];
+import { NAVIGATION_SECTIONS, INTERSECTION_OBSERVER_OPTIONS } from "../../constants/navigationConstants";
 
 const Navigation = () => {
   const menuLinks = useRef();
@@ -21,21 +12,15 @@ const Navigation = () => {
   };
 
   useEffect(() => {
-    const observerOptions = {
-      root: null,
-      rootMargin: "0px",
-      threshold: 0.6,
-    };
-
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           setActiveSection(entry.target.id);
         }
       });
-    }, observerOptions);
+    }, INTERSECTION_OBSERVER_OPTIONS);
 
-    sections.forEach((id) => {
+    NAVIGATION_SECTIONS.forEach((id) => {
       const section = document.getElementById(id);
       if (section) observer.observe(section);
     });
@@ -51,19 +36,13 @@ const Navigation = () => {
           <MenuBar />
         </HamburgerMenu>
         <NavLinks ref={menuLinks}>
-          {sections
-            .filter((section) => section !== "introduction")
-            .map((section, index) => (
-              <li key={section}>
-                <a
-                  href={`#${section}`}
-                  className={activeSection === section ? "active" : ""}
-                >
-                  <span>0{index + 1}.</span>{" "}
-                  {section.charAt(0).toUpperCase() + section.slice(1)}
-                </a>
-              </li>
-            ))}
+          {NAVIGATION_SECTIONS.filter((section) => section !== "introduction").map((section, index) => (
+            <li key={section}>
+              <a href={`#${section}`} className={activeSection === section ? "active" : ""}>
+                <span>0{index + 1}.</span> {section.charAt(0).toUpperCase() + section.slice(1)}
+              </a>
+            </li>
+          ))}
         </NavLinks>
       </div>
     </Nav>
