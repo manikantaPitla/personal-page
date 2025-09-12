@@ -1,19 +1,11 @@
 import React, { useRef } from "react";
 import { MenuBarEl } from "./style";
 
-const MenuBar = (props) => {
+const MenuBar = ({ isOpen, ...props }) => {
   const menuItem = useRef();
 
-  const onClickMenuBar = () => {
-    const children = menuItem.current.children;
-
-    children[0].classList.toggle("first-child");
-    children[1].classList.toggle("middle-child");
-    children[2].classList.toggle("last-child");
-  };
-
   return (
-    <MenuBarEl ref={menuItem} onClick={onClickMenuBar} {...props}>
+    <MenuBarEl ref={menuItem} $isOpen={isOpen} {...props}>
       <div></div>
       <div></div>
       <div></div>

@@ -37,8 +37,10 @@ export const SkillCard = styled.li`
   P {
     color: #252525 !important;
     margin-right: 10px;
-    font-size: 14px;
-    font-weight: 500;
+    font-family: var(--font-primary);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    letter-spacing: var(--letter-spacing-normal);
   }
 
   svg {

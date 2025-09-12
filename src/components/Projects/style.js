@@ -34,9 +34,11 @@ export const ProjectHeader = styled.p`
   width: fit-content;
   border-radius: 25px;
   padding: 10px 15px;
-  font-size: 12px;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-xs);
   color: black;
-  font-weight: 500;
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--letter-spacing-wide);
 `;
 
 export const ProjectDetailWrapper = styled.div`

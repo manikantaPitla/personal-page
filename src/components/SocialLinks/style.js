@@ -5,6 +5,11 @@ export const IconWrapper = styled.div`
   color: #fff;
   padding: 7px;
   border-radius: 50%;
+  height: 35px;
+  width: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const SocialLinkWrapper = styled.a`
@@ -40,5 +45,5 @@ export const LinkEl = styled.a`
 export const LinkName = styled.p`
   margin: 0;
   color: var(--text-secondary);
-  font-size: 12px !important;
+  font-size: 14px !important;
 `;

@@ -6,6 +6,8 @@ export const Main = styled.section`
   display: flex;
   align-items: center;
   justify-content: center;
+  padding-top: 80px;
+  box-sizing: border-box;
 `;
 
 export const ProfileWrapper = styled.div`
@@ -18,13 +20,17 @@ export const ProfileWrapper = styled.div`
 `;
 
 export const UserTitle = styled.h1`
-  font-size: 32px;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-5xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-tight);
   margin-bottom: 20px;
 
   @media screen and (min-width: 768px) {
-    font-size: 42px;
+    font-size: var(--font-size-6xl);
   }
   @media screen and (min-width: 1200px) {
-    font-size: 62px;
+    font-size: var(--font-size-7xl);
   }
 `;

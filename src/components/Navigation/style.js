@@ -15,11 +15,21 @@ export const Nav = styled.nav`
   align-items: center;
 
   .show-or-hide {
-    background-color: var(--bg-primary);
-    height: 300px;
+    background-color: rgba(10, 25, 47, 0.95);
+    height: 100vh !important;
     transition: height 0.4s ease, padding 0.4s ease;
-    padding: 10px 0;
-    border: 1px solid var(--text-glow);
+    padding: 0;
+    border: none;
+    pointer-events: auto;
+    visibility: visible !important;
+
+    li {
+      pointer-events: auto !important;
+
+      a {
+        pointer-events: auto !important;
+      }
+    }
   }
 
   .active {
@@ -35,6 +45,10 @@ export const Logo = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-lg);
+  letter-spacing: var(--letter-spacing-tight);
 `;
 
 export const HamburgerMenu = styled.div`
@@ -48,10 +62,14 @@ export const NavLinks = styled.ul`
   display: flex;
 
   li {
-    font-size: 13px;
+    font-family: var(--font-primary);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    letter-spacing: var(--letter-spacing-wide);
     padding: 0 15px;
     color: var(--text-secondary-light);
     cursor: pointer;
+    transition: color 0.3s ease;
 
     &:hover {
       color: var(--text-glow);
@@ -66,17 +84,45 @@ export const NavLinks = styled.ul`
     overflow: hidden;
     height: 0px;
     transition: height 0.4s ease, padding 0.4s ease;
-    position: absolute;
-    top: 100%;
-    right: 10%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(10, 25, 47, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     flex-direction: column;
-    /* -webkit-backdrop-filter: blur(5px); */
-    /* background-color: rgba(255, 255, 255, 0.4);
-    backdrop-filter: blur(8px); */
-    border-radius: 20px;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    pointer-events: none;
+    visibility: hidden;
 
     li {
-      padding: 15px 40px;
+      padding: 20px 0;
+      font-size: var(--font-size-xl);
+      text-align: center;
+      width: 100%;
+      pointer-events: none;
+
+      a {
+        color: var(--text-secondary-light) !important;
+        font-weight: var(--font-weight-medium);
+        transition: color 0.3s ease;
+        pointer-events: none;
+
+        &:hover {
+          color: var(--text-glow) !important;
+        }
+
+        span {
+          color: var(--text-glow) !important;
+        }
+      }
+
+      &:last-child {
+        border-bottom: none;
+      }
     }
   }
 `;
