@@ -40,7 +40,7 @@ export const PROFILE_DATA = {
       cgpa: "CGPA - 9.0",
     },
   ],
-  skills: ["HTML", "CSS", "Bootstrap", "TailwindCSS", "JavaScript", "React", "Redux", "Node.js", "Express.js", "Python", "SQLite", "MongoDB", "Firebase", "Git", "GitHub", "Linux"],
+  skills: ["HTML", "CSS", "Bootstrap", "Tailwind CSS", "JavaScript", "React", "Redux", "Node.js", "Express", "Python", "SQLite", "MongoDB", "Firebase", "Git", "GitHub", "Linux"],
   github_url: "https://api.github.com/users/manikantaPitla",
   projects: [
     {

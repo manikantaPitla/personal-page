@@ -51,7 +51,11 @@ function Home() {
         </MiddleContentWrapper>
 
         <SideContentWrapper>
-          <p>{PROFILE_DATA.email}</p>
+          <p>
+            <a href={`mailto:${PROFILE_DATA.email}`} style={{ color: "inherit", textDecoration: "none" }}>
+              {PROFILE_DATA.email}
+            </a>
+          </p>
           <hr />
         </SideContentWrapper>
       </MainContentWrapper>

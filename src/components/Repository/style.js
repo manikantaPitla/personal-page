@@ -33,3 +33,11 @@ export const ErrorContainer = styled.div`
   }
 `;
 
+export const LoadingContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  width: 100%;
+  grid-column: 1 / -1;
+`;

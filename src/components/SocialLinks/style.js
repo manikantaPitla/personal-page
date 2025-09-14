@@ -34,7 +34,7 @@ export const LinkEl = styled.a`
   &:hover {
     color: var(--text-glow);
     transform: scale(1.5);
-    border-radius: 10px;
+    border-radius: var(--border-radius);
 
     p {
       color: var(--text-glow);

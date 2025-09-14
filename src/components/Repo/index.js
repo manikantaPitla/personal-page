@@ -72,7 +72,7 @@ const Repo = ({ repoData }) => {
         </div>
         <a href={html_url} target="_blank" rel="noreferrer">
           <CustomButton>
-            <IconExport size="18" />
+            <IconExport size="16" />
           </CustomButton>
         </a>
       </RepoTopFlex>

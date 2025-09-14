@@ -1,6 +1,6 @@
 import React from "react";
 import { UiButton, UiHeading, UiPara } from "../../utils/uiMaterials";
-import { ErrorContainer, RepoContainer } from "./style";
+import { ErrorContainer, LoadingContainer, RepoContainer } from "./style";
 import Repo from "../Repo";
 import useFetchData from "../../hooks/useFetchData";
 import { useNetworkStatus } from "../../hooks/useNetworkStatus";
@@ -15,7 +15,9 @@ const Repository = ({ repoUrl }) => {
     <RepoContainer>
       <UiHeading>Repository</UiHeading>
       {loading ? (
-        <RingLoader />
+        <LoadingContainer>
+          <RingLoader />
+        </LoadingContainer>
       ) : error ? (
         <ErrorContainer>
           <p>{getErrorMessage(error)}</p>

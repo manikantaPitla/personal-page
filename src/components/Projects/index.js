@@ -17,14 +17,16 @@ const Projects = () => {
             const { projectName, imageUrl, githubLink, websiteUrl } = project;
             return (
               <ProjectItem key={index} style={{ backgroundImage: `url(${imageUrl})` }}>
-                <ProjectHeader>{projectName}</ProjectHeader>
                 <ProjectDetailWrapper>
-                  <a href={githubLink} target="_blank" rel="noreferrer" title="Github">
-                    <FiGithub />
-                  </a>
-                  <a href={websiteUrl} target="_blank" rel="noreferrer" title="website">
-                    <FiLink />
-                  </a>
+                  <ProjectHeader>{projectName}</ProjectHeader>
+                  <div className="project-links">
+                    <a href={githubLink} target="_blank" rel="noreferrer" title="Github">
+                      <FiGithub />
+                    </a>
+                    <a href={websiteUrl} target="_blank" rel="noreferrer" title="website">
+                      <FiLink />
+                    </a>
+                  </div>
                 </ProjectDetailWrapper>
               </ProjectItem>
             );

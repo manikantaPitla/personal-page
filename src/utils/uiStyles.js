@@ -11,7 +11,7 @@ export const ButtonEl = styled.button`
   color: var(--text-glow);
   background-color: var(--text-glow);
   color: var(--bg-primary);
-  border-radius: 8px;
+  border-radius: var(--border-radius);
   outline: none;
   cursor: pointer;
   font-family: var(--font-primary);
@@ -22,7 +22,7 @@ export const ButtonEl = styled.button`
 
   &:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(255, 123, 0, 0.3);
+    box-shadow: 0 2px 8px rgba(0, 187, 249, 0.4);
   }
 
   @media screen and (max-width: 500px) {
@@ -64,9 +64,9 @@ export const InputEl = styled.input`
   border: 1px solid var(--text-glow);
   padding: 10px 12px;
   color: var(--text-secondary-light);
-  border-radius: 8px;
+  border-radius: var(--border-radius);
   font-family: var(--font-primary);
-  font-size: var(--font-size-base);
+  font-size: var(--font-size-sm);
   font-weight: var(--font-weight-regular);
   line-height: var(--line-height-normal);
   letter-spacing: var(--letter-spacing-normal);

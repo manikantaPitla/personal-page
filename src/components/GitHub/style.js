@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const GitProfileWrapper = styled.div`
   background-color: var(--text-secondary);
   background-color: #fff;
-  border-radius: 25px;
+  border-radius: var(--border-radius);
   padding: 20px;
   color: #000;
   min-height: 208px;

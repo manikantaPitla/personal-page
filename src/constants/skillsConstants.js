@@ -32,7 +32,7 @@ export const SKILLS_LIST = [
     icon: <SiBootstrap />,
   },
   {
-    name: "TailwindCSS",
+    name: "Tailwind CSS",
     icon: <SiTailwindcss />,
   },
   {
@@ -52,7 +52,7 @@ export const SKILLS_LIST = [
     icon: <SiNodedotjs />,
   },
   {
-    name: "Express.js",
+    name: "Express",
     icon: <SiExpress />,
   },
   {

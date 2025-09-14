@@ -18,52 +18,90 @@ export const ProjectWrapper = styled.ul`
 export const ProjectItem = styled.li`
   padding: 10px;
   height: 230px;
-  border-radius: 25px;
+  border-radius: var(--border-radius);
   overflow: hidden;
   border: 1px solid var(--text-secondary);
   background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  transition: all 0.3s ease;
+  cursor: pointer;
 
-  &:hover div {
-    height: 100%;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    transition: all 0.3s ease;
+    z-index: 1;
+  }
+
+  &:hover::before {
+    background: rgba(0, 0, 0, 0.1);
+  }
+
+  > * {
+    position: relative;
+    z-index: 2;
   }
 `;
 
 export const ProjectHeader = styled.p`
-  background-color: var(--text-glow);
+  /* border: 1px solid var(--text-glow); */
   width: fit-content;
-  border-radius: 25px;
-  padding: 10px 15px;
+  border-radius: var(--border-radius);
+  /* padding: 10px; */
   font-family: var(--font-primary);
   font-size: var(--font-size-xs);
-  color: black;
+  color: var(--text-glow);
   font-weight: var(--font-weight-semibold);
-  letter-spacing: var(--letter-spacing-wide);
+  flex: 1;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+  padding: 0px 10px;
 `;
 
 export const ProjectDetailWrapper = styled.div`
-  backdrop-filter: blur(1px);
-  background-image: linear-gradient(to bottom, transparent, var(--text-glow));
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  height: 0%;
-  width: 100%;
+  backdrop-filter: blur(8px);
+  background: rgba(10, 25, 47, 0.8);
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-between;
   gap: 20px;
-  overflow: hidden;
-  transition: 0.4s height;
+  gap: 15px;
+  padding: 10px;
+  border-radius: var(--border-radius);
+
+  .project-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
 
   a {
     width: 40px;
     height: 40px;
     border-radius: 50px;
-    background-color: var(--bg-primary);
+    background-color: var(--text-glow);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--text-secondary);
+    color: var(--bg-primary);
+    transition: all 0.3s ease;
+    text-decoration: none;
+
+    &:hover {
+      transform: scale(1.1);
+      box-shadow: 0 2px 8px rgba(0, 187, 249, 0.4);
+    }
   }
 `;

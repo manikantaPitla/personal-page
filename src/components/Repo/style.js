@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const RepoCard = styled.li`
   border: 1px solid var(--text-secondary-light);
-  border-radius: 15px;
+  border-radius: var(--border-radius);
   padding: 15px 15px;
   display: flex;
   flex-direction: column;
@@ -71,19 +71,43 @@ export const LanguagePercentageItem = styled.div`
 export const CustomButton = styled.button`
   outline: none;
   cursor: pointer;
-  padding: 5px;
-  border-radius: 10px;
-  background-color: var(--text-secondary-light);
-  border: 1px solid var(--text-secondary);
+  padding: 8px;
+  border-radius: var(--border-radius);
+  background: rgba(0, 187, 249, 0.1);
+  border: 1px solid rgba(0, 187, 249, 0.3);
+  color: var(--text-glow);
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: all 0.3s ease;
+  min-width: 36px;
+  min-height: 36px;
+
+  &:hover {
+    background: rgba(0, 187, 249, 0.2);
+    border-color: var(--text-glow);
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(0, 187, 249, 0.4);
+  }
+
+  &:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 4px rgba(0, 187, 249, 0.3);
+  }
+
+  svg {
+    transition: transform 0.3s ease;
+  }
+
+  &:hover svg {
+    transform: scale(1.1);
+  }
 `;
 
 export const CustomBadge = styled.div`
   border: 1px solid var(--text-secondary-light);
   padding: 5px 10px;
-  border-radius: 10px;
+  border-radius: var(--border-radius);
 
   font-size: 10px;
 `;
