@@ -1,62 +1,16 @@
 import React, { useMemo } from "react";
-import {
-  CustomBadge,
-  CustomButton,
-  RepoBottomFlex,
-  RepoCard,
-  RepoFullName,
-  RepoName,
-  RepoTopFlex,
-  LanguageList,
-  LanguageBar,
-  LanguagePercentageItem,
-} from "./style";
+import { CustomBadge, CustomButton, RepoBottomFlex, RepoCard, RepoFullName, RepoName, RepoTopFlex, LanguageList, LanguageBar, LanguagePercentageItem } from "./style";
 import { IconExport } from "../../utils/uiComponents/Icons";
 import useFetchData from "../../hooks/useFetchData";
 import { LineLoader } from "../../utils/uiComponents/Loaders";
-
-const languageColors = {
-  JavaScript: "#f1e05a",
-  Python: "#3572A5",
-  Java: "#b07219",
-  TypeScript: "#3178c6",
-  HTML: "#e34c26",
-  CSS: "#563d7c",
-  C: "#555555",
-  "C++": "#f34b7d",
-  PHP: "#4F5D95",
-  Ruby: "#701516",
-  Swift: "#ffac45",
-  Kotlin: "#F18E33",
-  Go: "#00ADD8",
-  Rust: "#dea584",
-  Dart: "#00B4AB",
-  Shell: "#89e051",
-  "C#": "#178600",
-  Vue: "#42b883",
-  SCSS: "#c6538c",
-  SASS: "#a53b70",
-};
-
-const getLanguageColor = (language) => languageColors[language] || "#ccc";
+import { getLanguageColor } from "../../constants/colors";
 
 const Repo = ({ repoData }) => {
-  const {
-    name,
-    full_name,
-    visibility,
-    html_url,
-    default_branch,
-    homepage,
-    languages_url,
-  } = repoData;
+  const { name, full_name, visibility, html_url, default_branch, homepage, languages_url } = repoData;
   const { data: languages = {}, loading, error } = useFetchData(languages_url);
 
   const languagePercentages = useMemo(() => {
-    const totalBytes = Object.values(languages).reduce(
-      (acc, val) => acc + val,
-      0
-    );
+    const totalBytes = Object.values(languages).reduce((acc, val) => acc + val, 0);
     return Object.entries(languages).map(([language, bytes]) => ({
       language,
       percentage: totalBytes ? ((bytes / totalBytes) * 100).toFixed(2) : "0",
@@ -111,10 +65,7 @@ const Repo = ({ repoData }) => {
                 <LanguageList>
                   {languagePercentages.map(({ language, percentage }) => (
                     <LanguagePercentageItem key={language}>
-                      <p
-                        className="language-bullet"
-                        style={{ backgroundColor: getLanguageColor(language) }}
-                      ></p>
+                      <p className="language-bullet" style={{ backgroundColor: getLanguageColor(language) }}></p>
                       <p>
                         {language}: {percentage}%
                       </p>

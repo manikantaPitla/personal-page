@@ -7,6 +7,14 @@ export const RepoCard = styled.li`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  transition: all 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px var(--shadow-glow);
+    border-color: var(--text-glow);
+  }
 `;
 
 export const RepoName = styled.h4`
@@ -73,8 +81,8 @@ export const CustomButton = styled.button`
   cursor: pointer;
   padding: 8px;
   border-radius: var(--border-radius);
-  background: rgba(0, 187, 249, 0.1);
-  border: 1px solid rgba(0, 187, 249, 0.3);
+  background: var(--bg-card);
+  border: 1px solid var(--border-primary);
   color: var(--text-glow);
   display: flex;
   justify-content: center;
@@ -84,15 +92,15 @@ export const CustomButton = styled.button`
   min-height: 36px;
 
   &:hover {
-    background: rgba(0, 187, 249, 0.2);
+    background: var(--bg-card-hover);
     border-color: var(--text-glow);
     transform: translateY(-2px);
-    box-shadow: 0 2px 8px rgba(0, 187, 249, 0.4);
+    box-shadow: 0 2px 8px var(--shadow-glow);
   }
 
   &:active {
     transform: translateY(0);
-    box-shadow: 0 1px 4px rgba(0, 187, 249, 0.3);
+    box-shadow: 0 1px 4px var(--shadow-glow-subtle);
   }
 
   svg {

@@ -19,10 +19,11 @@ export const SkillCard = styled.li`
   justify-content: space-between;
   align-items: center;
   gap: 6px;
-  transition: all 0.4s;
+  transition: all 0.3s ease;
   box-shadow: 0 0px 2px 0 var(--dark-0700), 0 1px 1px 0 var(--dark-300);
   color: white;
   background-color: white;
+  cursor: pointer;
 
   h6 {
     height: 33px;
@@ -35,7 +36,7 @@ export const SkillCard = styled.li`
   }
 
   P {
-    color: #252525 !important;
+    color: var(--bg-skills-text) !important;
     margin-right: 10px;
     font-family: var(--font-primary);
     font-size: var(--font-size-sm);
@@ -49,6 +50,7 @@ export const SkillCard = styled.li`
   }
 
   &:hover {
-    transform: scale(1.1);
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 4px 8px var(--shadow-glow);
   }
 `;

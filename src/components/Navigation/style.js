@@ -6,7 +6,7 @@ export const Nav = styled.nav`
   top: 0;
   left: 0;
   width: 100%;
-  background-color: rgba(255, 255, 255, 0.001);
+  background-color: var(--overlay-navigation);
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
   z-index: 100;
@@ -15,7 +15,7 @@ export const Nav = styled.nav`
   align-items: center;
 
   .show-or-hide {
-    background-color: rgba(10, 25, 47, 0.95);
+    background-color: var(--overlay-backdrop-light);
     height: 100vh !important;
     transition: height 0.4s ease, padding 0.4s ease;
     padding: 0;
@@ -88,7 +88,7 @@ export const NavLinks = styled.ul`
     top: 0;
     left: 0;
     width: 100%;
-    background-color: rgba(10, 25, 47, 0.95);
+    background-color: var(--overlay-backdrop-light);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     flex-direction: column;

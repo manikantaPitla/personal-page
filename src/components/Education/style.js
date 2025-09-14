@@ -10,7 +10,7 @@ export const EduContent = styled.div`
 export const EduTimeLine = styled.ul`
   height: 500px;
   width: 2px;
-  background-color: rgba(255, 255, 255, 1);
+  background-color: var(--overlay-white);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -66,8 +66,8 @@ export const EduPara = styled.p`
   font-size: 16px;
   color: var(--text-secondary);
 
-  &.edu-title{
-    color: #fff;
+  &.edu-title {
+    color: var(--text-primary);
   }
 
   @media screen and (max-width: 500px) {

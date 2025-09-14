@@ -38,13 +38,13 @@ export const ProjectItem = styled.li`
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.4);
+    background: var(--overlay-dark);
     transition: all 0.3s ease;
     z-index: 1;
   }
 
   &:hover::before {
-    background: rgba(0, 0, 0, 0.1);
+    background: var(--overlay-dark-light);
   }
 
   > * {
@@ -54,10 +54,8 @@ export const ProjectItem = styled.li`
 `;
 
 export const ProjectHeader = styled.p`
-  /* border: 1px solid var(--text-glow); */
   width: fit-content;
   border-radius: var(--border-radius);
-  /* padding: 10px; */
   font-family: var(--font-primary);
   font-size: var(--font-size-xs);
   color: var(--text-glow);
@@ -66,13 +64,12 @@ export const ProjectHeader = styled.p`
   height: 40px;
   display: flex;
   align-items: center;
-  /* justify-content: center; */
   padding: 0px 10px;
 `;
 
 export const ProjectDetailWrapper = styled.div`
   backdrop-filter: blur(8px);
-  background: rgba(10, 25, 47, 0.8);
+  background: var(--overlay-backdrop);
   display: flex;
   justify-content: space-between;
   gap: 20px;
@@ -101,7 +98,7 @@ export const ProjectDetailWrapper = styled.div`
 
     &:hover {
       transform: scale(1.1);
-      box-shadow: 0 2px 8px rgba(0, 187, 249, 0.4);
+      box-shadow: 0 2px 8px var(--shadow-glow);
     }
   }
 `;

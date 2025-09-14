@@ -27,7 +27,7 @@ const GitHub = () => {
         ) : error ? (
           <ErrorContainer>
             <p>{getErrorMessage(error)}</p>
-            {!isOnline && <p style={{ color: "#ff6b6b", fontSize: "14px", marginTop: "10px" }}>📡 You appear to be offline. Please check your internet connection.</p>}
+            {!isOnline && <p style={{ color: "var(--status-error)", fontSize: "14px", marginTop: "10px" }}>📡 You appear to be offline. Please check your internet connection.</p>}
             <UiButton onClick={refetch} disabled={!isOnline}>
               {isOnline ? "Retry" : "Retry (Offline)"}
             </UiButton>

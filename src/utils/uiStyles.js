@@ -22,7 +22,7 @@ export const ButtonEl = styled.button`
 
   &:hover {
     transform: translateY(-2px);
-    box-shadow: 0 2px 8px rgba(0, 187, 249, 0.4);
+    box-shadow: 0 2px 8px var(--shadow-glow);
   }
 
   @media screen and (max-width: 500px) {

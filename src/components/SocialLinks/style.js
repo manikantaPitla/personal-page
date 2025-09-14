@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const IconWrapper = styled.div`
   background-color: var(--text-glow);
-  color: #fff;
+  color: var(--text-primary);
   padding: 7px;
   border-radius: 50%;
   height: 35px;
