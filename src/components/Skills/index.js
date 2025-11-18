@@ -1,8 +1,8 @@
 import React from "react";
 import { SkillCard, SkillsWrapper } from "./style";
 import { UiHeading, UiSection } from "../../utils/uiMaterials";
-import { SKILLS_LIST } from "../../constants/skillsConstants";
 import { SECTION_HEADINGS } from "../../constants/navigationConstants";
+import { PROFILE_DATA } from "../../constants/profileData";
 
 const Skills = () => {
   return (
@@ -12,7 +12,7 @@ const Skills = () => {
       </UiHeading>
       <div>
         <SkillsWrapper>
-          {SKILLS_LIST.map((skill, index) => (
+          {PROFILE_DATA.skills.map((skill, index) => (
             <SkillCard key={index}>
               <h6>{skill.icon}</h6>
               <p>{skill.name}</p>

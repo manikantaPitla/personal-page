@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from "react";
 import { HamburgerMenu, Logo, Nav, NavLinks } from "./style";
 import MenuBar from "../../utils/customMenuBar/MenuBar";
 import { NAVIGATION_SECTIONS, INTERSECTION_OBSERVER_OPTIONS } from "../../constants/navigationConstants";
+import { PROFILE_DATA } from "../../constants/profileData";
 
 const Navigation = () => {
   const menuLinks = useRef();
@@ -97,7 +98,7 @@ const Navigation = () => {
   return (
     <>
       <Nav>
-        <Logo>MP</Logo>
+        <Logo>{PROFILE_DATA.initials}</Logo>
         <div>
           <HamburgerMenu onClick={menuToggler}>
             <MenuBar isOpen={isMenuOpen} />

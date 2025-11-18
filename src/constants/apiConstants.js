@@ -1,9 +1,13 @@
+import { PROFILE_DATA } from "./profileData";
+
 // API configuration constants
 export const API_CONFIG = {
   GITHUB_TOKEN: process.env.REACT_APP_GITHUB_TOKEN,
-  GITHUB_API_URL: "https://api.github.com/users/manikantaPitla",
+  GITHUB_API_URL: PROFILE_DATA.githubUrl,
 };
 
-export const API_HEADERS = {
-  Authorization: `token ${process.env.REACT_APP_GITHUB_TOKEN}`,
-};
+export const API_HEADERS = API_CONFIG.GITHUB_TOKEN
+  ? {
+      Authorization: `token ${API_CONFIG.GITHUB_TOKEN}`,
+    }
+  : {};

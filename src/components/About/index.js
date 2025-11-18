@@ -16,7 +16,7 @@ const About = () => {
           <img alt="My Profile" src={userImage} title={PROFILE_DATA.name} loading="lazy" />
         </ProfileImageWrapper>
         <div>
-          {PROFILE_DATA.about.profile_description.map((paragraph, index) => (
+          {PROFILE_DATA.about.profileDescription.map((paragraph, index) => (
             <UiPara key={index}>{paragraph}</UiPara>
           ))}
         </div>

@@ -13,7 +13,7 @@ const GitHub = () => {
   const [repoVisible, setRepoVisible] = useState(false);
   const isOnline = useNetworkStatus();
 
-  const { data: profile, loading, error, refetch } = useFetchData(PROFILE_DATA.github_url);
+  const { data: profile, loading, error, refetch } = useFetchData(PROFILE_DATA.githubUrl);
 
   return (
     <UiSection id="github">

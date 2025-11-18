@@ -1,8 +1,8 @@
 import React from "react";
 import { ProjectDetailWrapper, ProjectHeader, ProjectItem, ProjectWrapper } from "./style";
 import { UiHeading, UiSection } from "../../utils/uiMaterials";
-import { PROJECTS_LIST } from "../../constants/projectsConstants";
 import { SECTION_HEADINGS } from "../../constants/navigationConstants";
+import { PROFILE_DATA } from "../../constants/profileData";
 import { FiGithub, FiLink } from "react-icons/fi";
 
 const Projects = () => {
@@ -13,14 +13,14 @@ const Projects = () => {
       </UiHeading>
       <div>
         <ProjectWrapper>
-          {PROJECTS_LIST.map((project, index) => {
-            const { projectName, imageUrl, githubLink, websiteUrl } = project;
+          {PROFILE_DATA.projects.map((project, index) => {
+            const { projectName, imageUrl, githubRepoUrl, websiteUrl } = project;
             return (
               <ProjectItem key={index} style={{ backgroundImage: `url(${imageUrl})` }}>
                 <ProjectDetailWrapper>
                   <ProjectHeader>{projectName}</ProjectHeader>
                   <div className="project-links">
-                    <a href={githubLink} target="_blank" rel="noreferrer" title="Github">
+                    <a href={githubRepoUrl} target="_blank" rel="noreferrer" title="Github">
                       <FiGithub />
                     </a>
                     <a href={websiteUrl} target="_blank" rel="noreferrer" title="website">

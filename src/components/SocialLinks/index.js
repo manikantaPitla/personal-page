@@ -14,7 +14,7 @@ const SocialLinks = ({ isrender = false }) => {
     return {
       name: contact.name,
       icon: iconMap[contact.name] || <FiGithub />,
-      link: contact.social_url,
+      link: contact.socialUrl,
     };
   });
 
