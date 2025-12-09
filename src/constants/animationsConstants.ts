@@ -1,5 +1,6 @@
-// Animation variants and constants
-export const FADE_IN_VARIANTS = {
+import type { UseInViewOptions, Variants } from "framer-motion";
+
+export const FADE_IN_VARIANTS: Variants = {
   hidden: { opacity: 0, y: 50 },
   visible: {
     opacity: 1,
@@ -8,7 +9,7 @@ export const FADE_IN_VARIANTS = {
   },
 };
 
-export const FRAMER_MOTION_OPTIONS = {
-  threshold: 0.5,
-  triggerOnce: true,
+export const FRAMER_MOTION_OPTIONS: UseInViewOptions = {
+  amount: 0.5,
+  once: true,
 };

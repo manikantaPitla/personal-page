@@ -20,7 +20,9 @@ export const SkillCard = styled.li`
   align-items: center;
   gap: 6px;
   transition: all 0.3s ease;
-  box-shadow: 0 0px 2px 0 var(--dark-0700), 0 1px 1px 0 var(--dark-300);
+  box-shadow:
+    0 0px 2px 0 var(--dark-0700),
+    0 1px 1px 0 var(--dark-300);
   color: white;
   background-color: white;
   cursor: pointer;

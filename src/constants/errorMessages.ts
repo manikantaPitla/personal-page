@@ -4,14 +4,19 @@ export const ERROR_MESSAGES = {
   GITHUB_API_ERROR: "Unable to fetch GitHub data. Please try again later.",
   GENERIC_ERROR: "Something went wrong. Please try again.",
   TIMEOUT_ERROR: "Request timed out. Please check your connection and try again.",
-};
+} as const;
 
-export const getErrorMessage = (error) => {
+export const getErrorMessage = (error?: string | null): string => {
   if (!error) return ERROR_MESSAGES.GENERIC_ERROR;
 
   const errorMessage = error.toLowerCase();
 
-  if (errorMessage.includes("network") || errorMessage.includes("fetch") || errorMessage.includes("connection") || errorMessage.includes("internet")) {
+  if (
+    errorMessage.includes("network") ||
+    errorMessage.includes("fetch") ||
+    errorMessage.includes("connection") ||
+    errorMessage.includes("internet")
+  ) {
     return ERROR_MESSAGES.NETWORK_ERROR;
   }
 

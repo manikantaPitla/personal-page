@@ -1,12 +1,19 @@
 import { useState, useEffect } from "react";
 
+const getInitialStatus = (): boolean => {
+  if (typeof navigator === "undefined") {
+    return true;
+  }
+  return navigator.onLine;
+};
+
 // Custom hook to monitor network status
-export const useNetworkStatus = () => {
-  const [isOnline, setIsOnline] = useState(navigator.onLine);
+export const useNetworkStatus = (): boolean => {
+  const [isOnline, setIsOnline] = useState<boolean>(getInitialStatus());
 
   useEffect(() => {
-    const handleOnline = () => setIsOnline(true);
-    const handleOffline = () => setIsOnline(false);
+    const handleOnline = (): void => setIsOnline(true);
+    const handleOffline = (): void => setIsOnline(false);
 
     window.addEventListener("online", handleOnline);
     window.addEventListener("offline", handleOffline);

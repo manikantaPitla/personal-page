@@ -1,21 +1,26 @@
-import React, { useState } from "react";
-import emailjs from "emailjs-com";
+import { ChangeEvent, FormEvent, useState } from "react";
 import { toast } from "react-hot-toast";
-import { UiButton, UiHeading, UiInput, UiPara, UiSection } from "../../utils/uiMaterials";
-import { ContactFlex, FormEl, SocialLinkWrapper } from "./style";
+import { UiButton, UiHeading, UiInput, UiPara, UiSection } from "../ui";
+import { ContactFlex, FormEl, SocialLinkWrapper } from "./styles";
 import SocialLinks from "../../components/SocialLinks";
-import { EMAIL_CONFIG, EMAIL_MESSAGES } from "../../constants/emailConstants";
-import { SECTION_HEADINGS } from "../../constants/navigationConstants";
+import { EMAIL_MESSAGES, SECTION_HEADINGS } from "../../constants";
+import { emailService } from "../../services";
+
+interface ContactFormData {
+  name: string;
+  email: string;
+  message: string;
+}
 
 const Contact = () => {
-  const [contactData, setContactData] = useState({
+  const [contactData, setContactData] = useState<ContactFormData>({
     name: "",
     email: "",
     message: "",
   });
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState<boolean>(false);
 
-  const onChangeFormData = (e) => {
+  const onChangeFormData = (e: ChangeEvent<HTMLInputElement>): void => {
     const { name, value } = e.target;
     setContactData((prevData) => ({
       ...prevData,
@@ -23,7 +28,7 @@ const Contact = () => {
     }));
   };
 
-  const resetForm = () => {
+  const resetForm = (): void => {
     setContactData({
       name: "",
       email: "",
@@ -31,7 +36,7 @@ const Contact = () => {
     });
   };
 
-  const validateForm = () => {
+  const validateForm = (): boolean => {
     const { name, email, message } = contactData;
 
     if (!name) {
@@ -52,22 +57,17 @@ const Contact = () => {
     return true;
   };
 
-  const submitForm = async (e) => {
+  const submitForm = async (e: FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
 
     if (!validateForm()) return;
     setLoading(true);
 
-    const emailPromise = emailjs.send(
-      EMAIL_CONFIG.SERVICE_ID,
-      EMAIL_CONFIG.TEMPLATE_ID,
-      {
-        from_name: contactData.name,
-        from_email: contactData.email,
-        message: contactData.message,
-      },
-      EMAIL_CONFIG.PUBLIC_KEY
-    );
+    const emailPromise = emailService.sendEmail({
+      name: contactData.name,
+      email: contactData.email,
+      message: contactData.message,
+    });
 
     await toast.promise(emailPromise, {
       loading: EMAIL_MESSAGES.LOADING,
@@ -85,9 +85,27 @@ const Contact = () => {
       </UiHeading>
       <ContactFlex>
         <FormEl onSubmit={submitForm} onReset={resetForm}>
-          <UiInput type="text" placeholder="Your Name" name="name" value={contactData.name} onChange={onChangeFormData} />
-          <UiInput type="email" placeholder="Your Email" name="email" value={contactData.email} onChange={onChangeFormData} />
-          <UiInput type="text" placeholder="Your Message" name="message" value={contactData.message} onChange={onChangeFormData} />
+          <UiInput
+            type="text"
+            placeholder="Your Name"
+            name="name"
+            value={contactData.name}
+            onChange={onChangeFormData}
+          />
+          <UiInput
+            type="email"
+            placeholder="Your Email"
+            name="email"
+            value={contactData.email}
+            onChange={onChangeFormData}
+          />
+          <UiInput
+            type="text"
+            placeholder="Your Message"
+            name="message"
+            value={contactData.message}
+            onChange={onChangeFormData}
+          />
           <div>
             <UiButton type="reset" disabled={loading}>
               Clear

@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
-export const MenuBarEl = styled.div`
+interface MenuBarProps {
+  $isOpen: boolean;
+}
+
+export const MenuBarEl = styled.div<MenuBarProps>`
   cursor: pointer;
   width: 35px;
   height: 30px;

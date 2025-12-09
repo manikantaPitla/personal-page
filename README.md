@@ -16,15 +16,19 @@ A modern, responsive portfolio website built with React showcasing my work, skil
 ```
 src/
 ├── animations/           # Animation components
-├── components/          # React components
+├── assets/              # Static assets (images, fonts)
+├── components/          # React components (features, layout, ui)
 ├── config/              # Configuration files
 ├── constants/           # All constants and data
 ├── hooks/               # Custom React hooks
-├── styles/              # CSS styles
+├── lib/                 # Third-party library configurations
+├── services/            # API services & external integrations
+├── styles/              # Global CSS styles
+├── types/               # TypeScript type definitions
 └── utils/               # Utility functions
 ```
 
-## Getting Started
+## Getting Started - Use Template
 
 1. **Clone and install**
 
@@ -57,7 +61,7 @@ REACT_APP_PUBLIC_KEY=your_emailjs_public_key
 
 ## Customization
 
-- Update profile data in `src/constants/profileData.js`
+- Update profile data in `src/constants/profileData.tsx`
 - Modify styles in `src/styles/`
 - Add new sections in `src/components/`
 

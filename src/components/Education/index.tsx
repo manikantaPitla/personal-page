@@ -1,8 +1,6 @@
-import React from "react";
-import { EduContent, EduItem, EduPara, EduTimeLine } from "./style";
-import { UiHeading, UiSection } from "../../utils/uiMaterials";
-import { PROFILE_DATA } from "../../constants/profileData";
-import { SECTION_HEADINGS } from "../../constants/navigationConstants";
+import { EduContent, EduItem, EduPara, EduTimeLine } from "./styles";
+import { UiHeading, UiSection } from "../ui";
+import { PROFILE_DATA, SECTION_HEADINGS } from "../../constants";
 
 const Education = () => {
   return (
@@ -14,7 +12,7 @@ const Education = () => {
       <EduContent>
         <EduTimeLine>
           {PROFILE_DATA.education.map((eachEdu, index) => {
-            const { name, duration, cgpa , role} = eachEdu;
+            const { name, duration, cgpa, role } = eachEdu;
 
             return (
               <EduItem key={index}>

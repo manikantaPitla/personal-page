@@ -1,9 +1,7 @@
-import React from "react";
-import { ProfileContentWrapper, ProfileImageWrapper } from "./style";
-import { UiHeading, UiPara, UiSection } from "../../utils/uiMaterials";
+import { ProfileContentWrapper, ProfileImageWrapper } from "./styles";
+import { UiHeading, UiPara, UiSection } from "../ui";
 import userImage from "../../assets/images/user/user_image.webp";
-import { PROFILE_DATA } from "../../constants/profileData";
-import { SECTION_HEADINGS } from "../../constants/navigationConstants";
+import { PROFILE_DATA, SECTION_HEADINGS } from "../../constants";
 
 const About = () => {
   return (

@@ -1,11 +1,10 @@
-import { motion } from "framer-motion";
-import { useRef } from "react";
-import { useInView } from "framer-motion";
-import { FADE_IN_VARIANTS, FRAMER_MOTION_OPTIONS } from "../constants/animationsConstants";
+import { motion, useInView } from "framer-motion";
+import { PropsWithChildren, useRef } from "react";
+import { FADE_IN_VARIANTS, FRAMER_MOTION_OPTIONS } from "../constants";
 
 // Reusable fade-in animation component
-export const SectionWrapper = ({ children }) => {
-  const ref = useRef(null);
+export const SectionWrapper = ({ children }: PropsWithChildren) => {
+  const ref = useRef<HTMLDivElement | null>(null);
   const isInView = useInView(ref, FRAMER_MOTION_OPTIONS);
 
   return (

@@ -16,9 +16,10 @@ import {
   SiFirebase,
   SiTailwindcss,
 } from "react-icons/si";
+import type { ProfileData } from "../types/profile";
 
 // Profile data constants
-export const PROFILE_DATA = {
+export const PROFILE_DATA: ProfileData = {
   name: "Manikanta Pitla",
   initials: "MP",
   description:
@@ -26,7 +27,8 @@ export const PROFILE_DATA = {
   resume: "https://drive.google.com/file/d/1lP7vhs4KeDTS2DCh3LP7sk7PwuCPZH7B/view?usp=sharing",
   email: "pitlamanikanta81@gmail.com",
   about: {
-    profileUrl: "https://res.cloudinary.com/df9fyawpk/image/upload/v1740495203/manikanta-pitla/profile/user-profile.webp",
+    profileUrl:
+      "https://res.cloudinary.com/df9fyawpk/image/upload/v1740495203/manikanta-pitla/profile/user-profile.webp",
     profileDescription: [
       "Hello! My name is Manikanta Pitla and I am passionate about creating interactive and responsive web applications. My interest in web development began when I started experimenting with building simple websites and applications, and it quickly grew into a full-fledged passion for coding and development.",
       "Over the years, I have honed my skills and developed a strong foundation in both front-end and back-end technologies. I love the process of bringing ideas to life on the internet and continuously strive to learn new techniques and tools to improve myself.",
@@ -63,17 +65,18 @@ export const PROFILE_DATA = {
   skills: [
     { name: "HTML", icon: <SiHtml5 /> },
     { name: "CSS", icon: <SiCss3 /> },
-    { name: "Bootstrap", icon: <SiBootstrap /> },
-    { name: "Tailwind CSS", icon: <SiTailwindcss /> },
     { name: "JavaScript", icon: <SiJavascript /> },
     { name: "React", icon: <SiReact /> },
+    { name: "React Native", icon: <SiReact /> },
     { name: "Redux", icon: <SiRedux /> },
+    { name: "Tailwind CSS", icon: <SiTailwindcss /> },
+    { name: "Bootstrap", icon: <SiBootstrap /> },
     { name: "Node.js", icon: <SiNodedotjs /> },
     { name: "Express", icon: <SiExpress /> },
-    { name: "Python", icon: <SiPython /> },
-    { name: "SQLite", icon: <SiSqlite /> },
     { name: "MongoDB", icon: <SiMongodb /> },
+    { name: "SQLite", icon: <SiSqlite /> },
     { name: "Firebase", icon: <SiFirebase /> },
+    { name: "Python", icon: <SiPython /> },
     { name: "Git", icon: <SiGit /> },
     { name: "GitHub", icon: <SiGithub /> },
     { name: "Linux", icon: <SiLinux /> },
@@ -82,7 +85,8 @@ export const PROFILE_DATA = {
   projects: [
     {
       projectName: "We Connect",
-      imageUrl: "https://res.cloudinary.com/df9fyawpk/image/upload/v1740495262/manikanta-pitla/projects/we-connect.webp",
+      imageUrl:
+        "https://res.cloudinary.com/df9fyawpk/image/upload/v1740495262/manikanta-pitla/projects/we-connect.webp",
       websiteUrl: "https://weconnectdev.netlify.app/",
       githubRepoUrl: "https://github.com/manikantaPitla/we-connect",
     },
@@ -94,25 +98,29 @@ export const PROFILE_DATA = {
     },
     {
       projectName: "Python Patterns",
-      imageUrl: "https://res.cloudinary.com/df9fyawpk/image/upload/v1740495261/manikanta-pitla/projects/python-patterns.webp",
+      imageUrl:
+        "https://res.cloudinary.com/df9fyawpk/image/upload/v1740495261/manikanta-pitla/projects/python-patterns.webp",
       websiteUrl: "https://pythonpatterns.ccbp.tech/",
       githubRepoUrl: "https://github.com/manikantaPitla/python-patterns",
     },
     {
       projectName: "Tourism",
-      imageUrl: "https://res.cloudinary.com/df9fyawpk/image/upload/v1740495262/manikanta-pitla/projects/tourism-page.webp",
+      imageUrl:
+        "https://res.cloudinary.com/df9fyawpk/image/upload/v1740495262/manikanta-pitla/projects/tourism-page.webp",
       websiteUrl: "https://visithyderabad.netlify.app/",
       githubRepoUrl: "https://github.com/manikantaPitla/visit-hyderabad-tourism-website",
     },
     {
       projectName: "Weather Application",
-      imageUrl: "https://res.cloudinary.com/df9fyawpk/image/upload/v1740495262/manikanta-pitla/projects/weather-app.webp",
+      imageUrl:
+        "https://res.cloudinary.com/df9fyawpk/image/upload/v1740495262/manikanta-pitla/projects/weather-app.webp",
       websiteUrl: "https://manikantapitla.github.io/Weather-application/",
       githubRepoUrl: "https://github.com/manikantaPitla/Weather-application",
     },
     {
       projectName: "Personal Portfolio",
-      imageUrl: "https://res.cloudinary.com/df9fyawpk/image/upload/v1740495261/manikanta-pitla/projects/personal-page.webp",
+      imageUrl:
+        "https://res.cloudinary.com/df9fyawpk/image/upload/v1740495261/manikanta-pitla/projects/personal-page.webp",
       websiteUrl: "https://manikantapitla.netlify.app/",
       githubRepoUrl: "https://github.com/manikantaPitla/personal-page",
     },
@@ -120,15 +128,15 @@ export const PROFILE_DATA = {
   contact: [
     {
       name: "Github",
-      socialUrl: "https://github.com/manikantaPitla",
+      url: "https://github.com/manikantaPitla",
     },
     {
       name: "LinkedIn",
-      socialUrl: "https://www.linkedin.com/in/manikantapitla/",
+      url: "https://www.linkedin.com/in/manikantapitla/",
     },
     {
       name: "Instagram",
-      socialUrl: "https://www.instagram.com/mani_dynamic_/",
+      url: "https://www.instagram.com/mani_dynamic_/",
     },
   ],
 };

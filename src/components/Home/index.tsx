@@ -1,6 +1,5 @@
-import React from "react";
 import Navigation from "../Navigation";
-import { MainContentWrapper, MiddleContentWrapper, SideContentWrapper } from "./style";
+import { MainContentWrapper, MiddleContentWrapper, SideContentWrapper } from "./styles";
 import About from "../About";
 import Skills from "../Skills";
 import Education from "../Education";
@@ -11,9 +10,9 @@ import Contact from "../Contact";
 import SocialLinks from "../../components/SocialLinks";
 import GitHub from "../GitHub";
 import { SectionWrapper } from "../../animations/fadeInAnimation";
-import { PROFILE_DATA } from "../../constants/profileData";
+import { PROFILE_DATA } from "../../constants";
 
-function Home() {
+const Home = () => {
   return (
     <>
       <Navigation />
@@ -61,6 +60,6 @@ function Home() {
       </MainContentWrapper>
     </>
   );
-}
+};
 
 export default Home;

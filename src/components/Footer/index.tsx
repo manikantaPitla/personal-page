@@ -1,7 +1,6 @@
-import React from "react";
-import { UiPara } from "../../utils/uiMaterials";
-import { FooterContainer } from "./style";
-import { PROFILE_DATA } from "../../constants/profileData";
+import { UiPara } from "../ui";
+import { FooterContainer } from "./styles";
+import { PROFILE_DATA } from "../../constants";
 
 const Footer = () => {
   return (

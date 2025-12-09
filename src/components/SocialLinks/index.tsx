@@ -1,34 +1,42 @@
-import React from "react";
+import { ReactElement } from "react";
 import { FiGithub, FiLinkedin, FiInstagram } from "react-icons/fi";
-import { IconWrapper, LinkEl, LinkName, SocialLinkWrapper } from "./style";
-import { PROFILE_DATA } from "../../constants/profileData";
+import { IconWrapper, LinkEl, LinkName, SocialLinkWrapper } from "./styles";
+import { PROFILE_DATA } from "../../constants";
 
-const SocialLinks = ({ isrender = false }) => {
-  const SocialLinksList = PROFILE_DATA.contact.map((contact, index) => {
-    const iconMap = {
-      Github: <FiGithub />,
-      LinkedIn: <FiLinkedin />,
-      Instagram: <FiInstagram />,
-    };
+interface SocialLinksProps {
+  isrender?: boolean;
+}
 
-    return {
-      name: contact.name,
-      icon: iconMap[contact.name] || <FiGithub />,
-      link: contact.socialUrl,
-    };
-  });
+const iconMap: Record<string, ReactElement> = {
+  Github: <FiGithub />,
+  LinkedIn: <FiLinkedin />,
+  Instagram: <FiInstagram />,
+};
+
+const SocialLinks = ({ isrender = false }: SocialLinksProps) => {
+  const socialLinksList = PROFILE_DATA.contact.map((contact) => ({
+    name: contact.name,
+    icon: iconMap[contact.name] || <FiGithub />,
+    link: contact.url,
+  }));
 
   return (
     <>
       {isrender
-        ? SocialLinksList.map((linkItem, index) => (
-            <SocialLinkWrapper key={index} href={linkItem.link} target="_blank" rel="noreferrer" title={linkItem.name}>
+        ? socialLinksList.map((linkItem) => (
+            <SocialLinkWrapper
+              key={linkItem.name}
+              href={linkItem.link}
+              target="_blank"
+              rel="noreferrer"
+              title={linkItem.name}
+            >
               <IconWrapper>{linkItem.icon}</IconWrapper>
               <LinkName>{linkItem.name}</LinkName>
             </SocialLinkWrapper>
           ))
-        : SocialLinksList.map((linkItem, index) => (
-            <LinkEl key={index} href={linkItem.link} target="_blank" rel="noreferrer" title={linkItem.name}>
+        : socialLinksList.map((linkItem) => (
+            <LinkEl key={linkItem.name} href={linkItem.link} target="_blank" rel="noreferrer" title={linkItem.name}>
               {linkItem.icon}
               {isrender && <LinkName>{linkItem.name}</LinkName>}
             </LinkEl>

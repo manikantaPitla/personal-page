@@ -1,8 +1,6 @@
-import React from "react";
-import { ProjectDetailWrapper, ProjectHeader, ProjectItem, ProjectWrapper } from "./style";
-import { UiHeading, UiSection } from "../../utils/uiMaterials";
-import { SECTION_HEADINGS } from "../../constants/navigationConstants";
-import { PROFILE_DATA } from "../../constants/profileData";
+import { ProjectDetailWrapper, ProjectHeader, ProjectItem, ProjectWrapper } from "./styles";
+import { UiHeading, UiSection } from "../ui";
+import { SECTION_HEADINGS, PROFILE_DATA } from "../../constants";
 import { FiGithub, FiLink } from "react-icons/fi";
 
 const Projects = () => {

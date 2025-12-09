@@ -1,15 +1,20 @@
-import React from "react";
-import { UiButton, UiHeading, UiPara } from "../../utils/uiMaterials";
-import { ErrorContainer, LoadingContainer, RepoContainer } from "./style";
+import { UiButton, UiHeading, UiPara } from "../ui";
+import { ErrorContainer, LoadingContainer, RepoContainer } from "./styles";
 import Repo from "../Repo";
 import useFetchData from "../../hooks/useFetchData";
 import { useNetworkStatus } from "../../hooks/useNetworkStatus";
-import { RingLoader } from "../../utils/uiComponents/Loaders";
-import { getErrorMessage } from "../../constants/errorMessages";
+import { RingLoader } from "../ui/Loaders";
+import { getErrorMessage } from "../../constants";
+import type { GitHubRepository } from "../../types/github";
 
-const Repository = ({ repoUrl }) => {
-  const { data: repos, loading, error, refetch } = useFetchData(repoUrl);
+interface RepositoryProps {
+  repoUrl?: string | null;
+}
+
+const Repository = ({ repoUrl }: RepositoryProps) => {
+  const { data: repos, loading, error, refetch } = useFetchData<GitHubRepository[]>(repoUrl ?? undefined);
   const isOnline = useNetworkStatus();
+  const repositoryList = repos ?? [];
 
   return (
     <RepoContainer>
@@ -21,13 +26,28 @@ const Repository = ({ repoUrl }) => {
       ) : error ? (
         <ErrorContainer>
           <p>{getErrorMessage(error)}</p>
-          {!isOnline && <p style={{ color: "var(--status-error)", fontSize: "14px", marginTop: "10px" }}>📡 You appear to be offline. Please check your internet connection.</p>}
-          <UiButton onClick={refetch} disabled={!isOnline}>
+          {!isOnline && (
+            <p style={{ color: "var(--status-error)", fontSize: "14px", marginTop: "10px" }}>
+              📡 You appear to be offline. Please check your internet connection.
+            </p>
+          )}
+          <UiButton
+            onClick={() => {
+              void refetch();
+            }}
+            disabled={!isOnline}
+          >
             {isOnline ? "Retry" : "Retry (Offline)"}
           </UiButton>
         </ErrorContainer>
       ) : (
-        <ul>{repos.length > 0 ? repos.map((repo) => <Repo key={repo.id} repoData={repo} />) : <UiPara>No repositories found</UiPara>}</ul>
+        <ul>
+          {repositoryList.length > 0 ? (
+            repositoryList.map((repo) => <Repo key={repo.id} repoData={repo} />)
+          ) : (
+            <UiPara>No repositories found</UiPara>
+          )}
+        </ul>
       )}
     </RepoContainer>
   );

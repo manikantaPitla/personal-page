@@ -1,19 +1,23 @@
-import React, { useState } from "react";
-import { UiButton, UiHeading, UiSection } from "../../utils/uiMaterials";
-import { ButtonWrapper, ErrorContainer, GitProfileWrapper, ProfileCard, ProfileWrapper } from "./style";
-import { RingLoader } from "../../utils/uiComponents/Loaders";
+import { useState } from "react";
+import { UiButton, UiHeading, UiSection } from "../ui";
+import { ButtonWrapper, ErrorContainer, GitProfileWrapper, ProfileCard, ProfileWrapper } from "./styles";
+import { RingLoader } from "../ui/Loaders";
 import Repository from "../Repository";
 import useFetchData from "../../hooks/useFetchData";
 import { useNetworkStatus } from "../../hooks/useNetworkStatus";
-import { PROFILE_DATA } from "../../constants/profileData";
-import { SECTION_HEADINGS } from "../../constants/navigationConstants";
-import { getErrorMessage } from "../../constants/errorMessages";
+import { PROFILE_DATA, SECTION_HEADINGS, ERROR_MESSAGES, getErrorMessage } from "../../constants";
+import type { GitHubProfile } from "../../types/github";
 
 const GitHub = () => {
-  const [repoVisible, setRepoVisible] = useState(false);
+  const [repoVisible, setRepoVisible] = useState<boolean>(false);
   const isOnline = useNetworkStatus();
 
-  const { data: profile, loading, error, refetch } = useFetchData(PROFILE_DATA.githubUrl);
+  const { data: profile, loading, error, refetch } = useFetchData<GitHubProfile>(PROFILE_DATA.githubUrl);
+  const fallbackProfileUrl = PROFILE_DATA.contact.find((contact) => contact.name === "Github")?.url ?? "#";
+  const profileImage = profile?.avatar_url ?? PROFILE_DATA.about.profileUrl;
+  const profileName = profile?.name ?? PROFILE_DATA.name;
+  const profileLogin = profile?.login ?? PROFILE_DATA.initials;
+  const profileBio = profile?.bio ?? "GitHub profile";
 
   return (
     <UiSection id="github">
@@ -27,23 +31,32 @@ const GitHub = () => {
         ) : error ? (
           <ErrorContainer>
             <p>{getErrorMessage(error)}</p>
-            {!isOnline && <p style={{ color: "var(--status-error)", fontSize: "14px", marginTop: "10px" }}>📡 You appear to be offline. Please check your internet connection.</p>}
-            <UiButton onClick={refetch} disabled={!isOnline}>
+            {!isOnline && (
+              <p style={{ color: "var(--status-error)", fontSize: "14px", marginTop: "10px" }}>
+                📡 You appear to be offline. Please check your internet connection.
+              </p>
+            )}
+            <UiButton
+              onClick={() => {
+                void refetch();
+              }}
+              disabled={!isOnline}
+            >
               {isOnline ? "Retry" : "Retry (Offline)"}
             </UiButton>
           </ErrorContainer>
-        ) : (
+        ) : profile ? (
           <ProfileWrapper>
             <ProfileCard>
-              <img src={profile?.avatar_url} alt={profile?.name} title={profile?.name} loading="lazy" />
+              <img src={profileImage} alt={profileName} title={profileName} loading="lazy" />
               <div>
-                <h3>{profile?.name}</h3>
-                <p>@{profile?.login}</p>
-                <p>{profile?.bio}</p>
+                <h3>{profileName}</h3>
+                <p>@{profileLogin}</p>
+                <p>{profileBio}</p>
               </div>
             </ProfileCard>
             <ButtonWrapper>
-              <a href={profile?.html_url} target="_blank" rel="noreferrer">
+              <a href={profile.html_url ?? fallbackProfileUrl} target="_blank" rel="noreferrer">
                 <UiButton>Visit GitHub</UiButton>
               </a>
               <UiButton type="button" onClick={() => setRepoVisible((prev) => !prev)}>
@@ -51,6 +64,18 @@ const GitHub = () => {
               </UiButton>
             </ButtonWrapper>
           </ProfileWrapper>
+        ) : (
+          <ErrorContainer>
+            <p>{ERROR_MESSAGES.GENERIC_ERROR}</p>
+            <UiButton
+              onClick={() => {
+                void refetch();
+              }}
+              disabled={!isOnline}
+            >
+              Retry
+            </UiButton>
+          </ErrorContainer>
         )}
 
         {repoVisible && <Repository repoUrl={profile?.repos_url} />}

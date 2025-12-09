@@ -1,34 +1,38 @@
-import React, { useRef, useState, useEffect } from "react";
-import { HamburgerMenu, Logo, Nav, NavLinks } from "./style";
-import MenuBar from "../../utils/customMenuBar/MenuBar";
-import { NAVIGATION_SECTIONS, INTERSECTION_OBSERVER_OPTIONS } from "../../constants/navigationConstants";
-import { PROFILE_DATA } from "../../constants/profileData";
+import { useRef, useState, useEffect } from "react";
+import { HamburgerMenu, Logo, Nav, NavLinks } from "./styles";
+import MenuBar from "../ui/MenuBar";
+import {
+  NAVIGATION_SECTIONS,
+  INTERSECTION_OBSERVER_OPTIONS,
+  PROFILE_DATA,
+  type NavigationSection,
+} from "../../constants";
 
 const Navigation = () => {
-  const menuLinks = useRef();
-  const [activeSection, setActiveSection] = useState("");
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const menuLinks = useRef<HTMLUListElement | null>(null);
+  const [activeSection, setActiveSection] = useState<NavigationSection | "">("");
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
 
-  const menuToggler = () => {
-    setIsMenuOpen(!isMenuOpen);
+  const menuToggler = (): void => {
+    setIsMenuOpen((prev) => !prev);
   };
 
-  const closeMenu = () => {
+  const closeMenu = (): void => {
     setIsMenuOpen(false);
   };
 
-  const scrollToSection = (sectionId) => {
+  const scrollToSection = (sectionId: NavigationSection): void => {
     closeMenu();
 
     document.body.style.overflow = "unset";
     document.body.style.position = "static";
     document.documentElement.style.overflow = "unset";
 
-    const scrollToElement = () => {
+    const scrollToElement = (): void => {
       const element = document.getElementById(sectionId);
 
       if (element) {
-        const scrollToPosition = () => {
+        const scrollToPosition = (): void => {
           const elementTop = element.offsetTop;
           const elementPosition = elementTop - 100;
 
@@ -60,7 +64,10 @@ const Navigation = () => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          setActiveSection(entry.target.id);
+          const sectionId = entry.target.id as NavigationSection;
+          if (NAVIGATION_SECTIONS.includes(sectionId)) {
+            setActiveSection(sectionId);
+          }
         }
       });
     }, INTERSECTION_OBSERVER_OPTIONS);
@@ -86,12 +93,13 @@ const Navigation = () => {
   }, [isMenuOpen]);
 
   useEffect(() => {
-    if (menuLinks.current) {
-      if (isMenuOpen) {
-        menuLinks.current.classList.add("show-or-hide");
-      } else {
-        menuLinks.current.classList.remove("show-or-hide");
-      }
+    const menuElement = menuLinks.current;
+    if (!menuElement) return;
+
+    if (isMenuOpen) {
+      menuElement.classList.add("show-or-hide");
+    } else {
+      menuElement.classList.remove("show-or-hide");
     }
   }, [isMenuOpen]);
 

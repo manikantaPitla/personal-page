@@ -88,20 +88,29 @@ export const colors = {
     githubText: "#000000", // GitHub card text
     skills: "#252525", // Skills text color
   },
-};
+} as const;
+
+type ColorConfig = typeof colors;
 
 // Helper function to get language color
-export const getLanguageColor = (language) => {
-  return colors.languages[language] || colors.languages.default;
+export const getLanguageColor = (language: keyof ColorConfig["languages"] | string): string => {
+  const key = language as keyof ColorConfig["languages"];
+  return colors.languages[key] ?? colors.languages.default;
 };
 
 // Helper function to get CSS custom property value
-export const getCSSVar = (colorPath) => {
+export const getCSSVar = (colorPath: string): unknown => {
   const keys = colorPath.split(".");
-  let value = colors;
+  let value: unknown = colors;
+
   for (const key of keys) {
-    value = value[key];
+    if (typeof value === "object" && value !== null && key in (value as Record<string, unknown>)) {
+      value = (value as Record<string, unknown>)[key];
+    } else {
+      return undefined;
+    }
   }
+
   return value;
 };
 

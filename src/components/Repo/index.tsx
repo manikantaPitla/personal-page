@@ -1,17 +1,34 @@
-import React, { useMemo } from "react";
-import { CustomBadge, CustomButton, RepoBottomFlex, RepoCard, RepoFullName, RepoName, RepoTopFlex, LanguageList, LanguageBar, LanguagePercentageItem } from "./style";
-import { IconExport } from "../../utils/uiComponents/Icons";
+import { useMemo } from "react";
+import {
+  CustomBadge,
+  CustomButton,
+  RepoBottomFlex,
+  RepoCard,
+  RepoFullName,
+  RepoName,
+  RepoTopFlex,
+  LanguageList,
+  LanguageBar,
+  LanguagePercentageItem,
+} from "./styles";
+import { IconExport } from "../ui";
 import useFetchData from "../../hooks/useFetchData";
-import { LineLoader } from "../../utils/uiComponents/Loaders";
+import { LineLoader } from "../ui/Loaders";
 import { getLanguageColor } from "../../constants/colors";
+import type { GitHubRepository, RepositoryLanguageBreakdown } from "../../types/github";
 
-const Repo = ({ repoData }) => {
+interface RepoProps {
+  repoData: GitHubRepository;
+}
+
+const Repo = ({ repoData }: RepoProps) => {
   const { name, full_name, visibility, html_url, default_branch, homepage, languages_url } = repoData;
-  const { data: languages = {}, loading, error } = useFetchData(languages_url);
+  const { data: languages, loading, error } = useFetchData<RepositoryLanguageBreakdown>(languages_url);
 
   const languagePercentages = useMemo(() => {
-    const totalBytes = Object.values(languages).reduce((acc, val) => acc + val, 0);
-    return Object.entries(languages).map(([language, bytes]) => ({
+    const languageData = languages ?? {};
+    const totalBytes = Object.values(languageData).reduce((acc, val) => acc + val, 0);
+    return Object.entries(languageData).map(([language, bytes]) => ({
       language,
       percentage: totalBytes ? ((bytes / totalBytes) * 100).toFixed(2) : "0",
     }));

@@ -1,54 +1,58 @@
 import { useCallback, useEffect, useState } from "react";
-import axios from "axios";
-import { API_HEADERS } from "../constants/apiConstants";
+import { apiClient } from "../lib/axios";
 
-function useFetchData(url) {
-  const [data, setData] = useState([]);
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(true);
+const hasNavigatorSupport = (): boolean => typeof navigator !== "undefined";
+const isOnline = (): boolean => (hasNavigatorSupport() ? navigator.onLine : true);
+
+function useFetchData<T = unknown>(url?: string) {
+  const [data, setData] = useState<T | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
 
   const fetchData = useCallback(async () => {
+    if (!url) {
+      return;
+    }
+
     const controller = new AbortController();
-    let timeoutId;
+    let timeoutId: ReturnType<typeof setTimeout> | null = null;
 
     try {
       setLoading(true);
       setError(null);
 
-      // Check if online before making the request
-      if (!navigator.onLine) {
+      if (!isOnline()) {
         throw new Error("Network Error: No internet connection");
       }
 
       timeoutId = setTimeout(() => controller.abort(), 10000); // 10 second timeout
 
-      const response = await axios.get(url, {
-        headers: API_HEADERS,
+      const response = await apiClient.get<T>(url, {
         signal: controller.signal,
-        timeout: 10000,
       });
 
       setData(response.data);
     } catch (err) {
-      let errorMessage = err.message;
+      let errorMessage = "Something went wrong";
 
-      if (axios.isAxiosError(err)) {
-        if (err.code === "ECONNABORTED") {
-          errorMessage = "Network Error: Request timed out";
-        } else if (err.code === "ERR_CANCELED" || err.name === "CanceledError") {
-          errorMessage = "Network Error: Request cancelled";
-        } else if (err.response) {
-          errorMessage = `API Error: ${err.response.status} ${err.response.statusText}`;
-        } else if (err.request) {
-          errorMessage = "Network Error: Unable to connect to server";
-        }
-      } else if (err.name === "AbortError") {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const axiosError = err as any;
+      
+      if (axiosError.code === "ECONNABORTED" || axiosError.message?.includes("timeout")) {
         errorMessage = "Network Error: Request timed out";
-      } else if (err.name === "TypeError" && err.message.includes("fetch")) {
+      } else if (axiosError.code === "ERR_CANCELED" || axiosError.name === "CanceledError") {
+        errorMessage = "Network Error: Request cancelled";
+      } else if (axiosError.response) {
+        errorMessage = `API Error: ${axiosError.response.status} ${axiosError.response.statusText || ""}`;
+      } else if (axiosError.request) {
+        errorMessage = "Network Error: Unable to connect to server";
+      } else if (err instanceof DOMException && err.name === "AbortError") {
+        errorMessage = "Network Error: Request timed out";
+      } else if (err instanceof Error && err.message.includes("fetch")) {
         errorMessage = "Network Error: Unable to connect to the internet";
       }
 
-      if (!navigator.onLine) {
+      if (!isOnline()) {
         errorMessage = "Network Error: No internet connection";
       }
 
@@ -62,7 +66,9 @@ function useFetchData(url) {
   }, [url]);
 
   useEffect(() => {
-    if (url) fetchData();
+    if (url) {
+      void fetchData();
+    }
   }, [fetchData, url]);
 
   return { data, loading, error, refetch: fetchData };

@@ -29,7 +29,9 @@ export const ProfileImageWrapper = styled.div`
   overflow: hidden;
   align-self: center;
 
-  transition: border-radius 0.4s ease, padding 0.4s ease;
+  transition:
+    border-radius 0.4s ease,
+    padding 0.4s ease;
 
   img {
     object-fit: cover;

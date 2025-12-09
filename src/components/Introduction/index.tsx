@@ -1,7 +1,6 @@
-import React from "react";
-import { Main, ProfileWrapper, UserTitle } from "./style";
-import { UiButton, UiPara } from "../../utils/uiMaterials";
-import { PROFILE_DATA } from "../../constants/profileData";
+import { Main, ProfileWrapper, UserTitle } from "./styles";
+import { UiButton, UiPara } from "../ui";
+import { PROFILE_DATA } from "../../constants";
 
 const Introduction = () => {
   return (

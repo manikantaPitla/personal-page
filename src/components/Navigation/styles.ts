@@ -17,7 +17,9 @@ export const Nav = styled.nav`
   .show-or-hide {
     background-color: var(--overlay-backdrop-light);
     height: 100vh !important;
-    transition: height 0.4s ease, padding 0.4s ease;
+    transition:
+      height 0.4s ease,
+      padding 0.4s ease;
     padding: 0;
     border: none;
     pointer-events: auto;
@@ -83,7 +85,9 @@ export const NavLinks = styled.ul`
   @media screen and (max-width: 768px) {
     overflow: hidden;
     height: 0px;
-    transition: height 0.4s ease, padding 0.4s ease;
+    transition:
+      height 0.4s ease,
+      padding 0.4s ease;
     position: fixed;
     top: 0;
     left: 0;
