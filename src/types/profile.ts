@@ -1,4 +1,4 @@
-import type { ReactElement } from "react";
+import type { ComponentType } from "react";
 
 export interface AboutDetails {
   profileUrl: string;
@@ -14,7 +14,7 @@ export interface EducationEntry {
 
 export interface Skill {
   name: string;
-  icon: ReactElement;
+  icon: ComponentType<any>;
 }
 
 export interface ProjectDetails {

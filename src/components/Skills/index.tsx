@@ -10,12 +10,17 @@ const Skills = () => {
       </UiHeading>
       <div>
         <SkillsWrapper>
-          {PROFILE_DATA.skills.map((skill, index) => (
-            <SkillCard key={index}>
-              <h6>{skill.icon}</h6>
-              <p>{skill.name}</p>
-            </SkillCard>
-          ))}
+          {PROFILE_DATA.skills.map((skill, index) => {
+            const IconComponent = skill.icon;
+            return (
+              <SkillCard key={index}>
+                <h6>
+                  <IconComponent />
+                </h6>
+                <p>{skill.name}</p>
+              </SkillCard>
+            );
+          })}
         </SkillsWrapper>
       </div>
     </UiSection>

@@ -66,7 +66,7 @@ const Contact = () => {
     const emailPromise = emailService.sendEmail({
       name: contactData.name,
       email: contactData.email,
-      message: contactData.message,
+        message: contactData.message,
     });
 
     await toast.promise(emailPromise, {

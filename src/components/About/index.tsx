@@ -1,6 +1,5 @@
 import { ProfileContentWrapper, ProfileImageWrapper } from "./styles";
 import { UiHeading, UiPara, UiSection } from "../ui";
-import userImage from "../../assets/images/user/user_image.webp";
 import { PROFILE_DATA, SECTION_HEADINGS } from "../../constants";
 
 const About = () => {
@@ -11,7 +10,7 @@ const About = () => {
       </UiHeading>
       <ProfileContentWrapper>
         <ProfileImageWrapper>
-          <img alt="My Profile" src={userImage} title={PROFILE_DATA.name} loading="lazy" />
+          <img alt="My Profile" src={PROFILE_DATA.about.profileUrl} title={PROFILE_DATA.name} loading="lazy" />
         </ProfileImageWrapper>
         <div>
           {PROFILE_DATA.about.profileDescription.map((paragraph, index) => (
