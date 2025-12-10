@@ -1,13 +1,13 @@
-# Personal Portfolio Website
+## Personal Portfolio Website
 
 A modern, responsive portfolio website built with React showcasing my work, skills, and experience as a Full Stack Developer.
 
-## Tech Stack
+### Tech Stack
 
 - React 18, TypeScript, Styled Components, Framer Motion
 - React Icons, EmailJS, React Hot Toast
 
-## Project Structure
+### Project Structure
 
 ```
 src/
@@ -78,7 +78,7 @@ src/
 └── react-app-env.d.ts   # React app type declarations
 ```
 
-## Getting Started
+### Getting Started
 
 This portfolio can also be used as a template. Follow these steps to set up and customize it for your own use:
 
@@ -169,7 +169,7 @@ npm start
 
 The application will open at `http://localhost:3000`
 
-## Environment Variables
+### Environment Variables
 
 ### GitHub Token (Required)
 
@@ -199,7 +199,7 @@ The application will open at `http://localhost:3000`
 
 **Note:** The contact form will not work without these credentials. The email template in `templates/email-template.html` matches the portfolio's dark theme and can be customized as needed.
 
-## Customization Guide
+### Customization Guide
 
 ### Update Profile Information
 
@@ -236,7 +236,7 @@ Edit `src/constants/profileData.tsx` to customize:
 - Animation variants: `src/constants/animationsConstants.ts`
 - Animation wrapper: `src/animations/fadeInAnimation.tsx`
 
-## Developer Contact
+### Developer Contact
 
 - **Email**: pitlamanikanta81@gmail.com
 - **LinkedIn**: [manikantapitla](https://www.linkedin.com/in/manikantapitla/)
