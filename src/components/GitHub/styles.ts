@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
 export const GitProfileWrapper = styled.div`
-  background-color: var(--bg-github);
+  background-color: var(--bg-white);
   border-radius: var(--border-radius);
   padding: 20px;
-  color: var(--bg-github-text);
+  color: var(--text-secondary);
   min-height: 208px;
 `;
 

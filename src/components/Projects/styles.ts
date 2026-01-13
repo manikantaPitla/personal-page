@@ -20,7 +20,7 @@ export const ProjectItem = styled.li`
   height: 230px;
   border-radius: var(--border-radius);
   overflow: hidden;
-  border: 1px solid var(--text-secondary-light);
+  border: 1px solid var(--border-color);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -38,7 +38,7 @@ export const ProjectItem = styled.li`
     left: 0;
     right: 0;
     bottom: 0;
-    background: var(--overlay-dark);
+    background: rgba(0, 0, 0, 0.4);
     transition: all 0.3s ease;
     z-index: 1;
   }
@@ -48,7 +48,7 @@ export const ProjectItem = styled.li`
   }
 
   &:hover::before {
-    background: var(--overlay-dark-light);
+    background: rgba(0, 0, 0, 0.1);
   }
 
   > * {

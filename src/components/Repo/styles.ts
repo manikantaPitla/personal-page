@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const RepoCard = styled.li`
-  border: 1px solid var(--text-secondary-light);
+  border: 1px solid var(--border-color);
   border-radius: var(--border-radius);
   padding: 15px 15px;
   display: flex;
@@ -83,8 +83,8 @@ export const CustomButton = styled.button`
   cursor: pointer;
   padding: 8px;
   border-radius: var(--border-radius);
-  background: var(--bg-card);
-  border: 1px solid var(--border-primary);
+  background: transparent;
+  border: 1px solid var(--border-color);
   color: var(--secondary);
   display: flex;
   justify-content: center;
@@ -94,7 +94,7 @@ export const CustomButton = styled.button`
   min-height: 36px;
 
   &:hover {
-    background: var(--bg-card-hover);
+    background: var(--bg-white);
     border-color: var(--secondary);
     transform: translateY(-2px);
   }

@@ -21,7 +21,7 @@ export const SkillCard = styled.li`
   gap: 6px;
   transition: all 0.3s ease;
   color: var(--text-primary);
-  background-color: var(--overlay-white);
+  background-color: var(--bg-white);
   cursor: pointer;
 
   h6 {
@@ -35,7 +35,7 @@ export const SkillCard = styled.li`
   }
 
   p {
-    color: var(--bg-skills-text);
+    color: var(--text-secondary);
     margin-right: 10px;
     font-family: var(--font-primary);
     font-size: var(--font-size-sm);

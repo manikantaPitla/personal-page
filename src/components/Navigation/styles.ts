@@ -6,7 +6,7 @@ export const Nav = styled.nav`
   top: 0;
   left: 0;
   width: 100%;
-  background-color: var(--overlay-navigation);
+  background-color: transparent;
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
   z-index: 100;
