@@ -29,8 +29,14 @@ export const ErrorContainer = styled.div`
   }
 
   p {
-    font-size: 14px;
+    font-size: var(--font-size-sm);
   }
+`;
+
+export const ErrorMessage = styled.p`
+  color: var(--status-error);
+  font-size: var(--font-size-sm);
+  margin-top: var(--spacing-md);
 `;
 
 export const LoadingContainer = styled.div`

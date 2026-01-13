@@ -1,4 +1,3 @@
-// Environment configuration
 export const ENV_CONFIG = {
   GITHUB_TOKEN: process.env.REACT_APP_GITHUB_TOKEN,
   EMAIL_SERVICE_ID: process.env.REACT_APP_SERVICE_ID,

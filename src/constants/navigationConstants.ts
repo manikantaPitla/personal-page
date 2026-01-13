@@ -1,4 +1,3 @@
-// Navigation constants
 export const NAVIGATION_SECTIONS = [
   "introduction",
   "about",

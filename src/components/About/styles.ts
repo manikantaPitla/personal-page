@@ -24,7 +24,7 @@ export const ProfileImageWrapper = styled.div`
   min-height: 250px;
   width: 250px;
   height: 250px;
-  background-color: var(--text-glow);
+  background-color: var(--secondary);
   border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
   overflow: hidden;
   align-self: center;

@@ -20,25 +20,22 @@ export const SkillCard = styled.li`
   align-items: center;
   gap: 6px;
   transition: all 0.3s ease;
-  box-shadow:
-    0 0px 2px 0 var(--dark-0700),
-    0 1px 1px 0 var(--dark-300);
-  color: white;
-  background-color: white;
+  color: var(--text-primary);
+  background-color: var(--overlay-white);
   cursor: pointer;
 
   h6 {
     height: 33px;
     width: 33px;
-    background-color: var(--text-glow);
+    background-color: var(--secondary);
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
   }
 
-  P {
-    color: var(--bg-skills-text) !important;
+  p {
+    color: var(--bg-skills-text);
     margin-right: 10px;
     font-family: var(--font-primary);
     font-size: var(--font-size-sm);
@@ -47,12 +44,11 @@ export const SkillCard = styled.li`
   }
 
   svg {
-    font-size: 14px;
-    color: var(--bg-primary);
+    font-size: var(--font-size-sm);
+    color: var(--primary);
   }
 
   &:hover {
     transform: translateY(-2px) scale(1.05);
-    box-shadow: 0 4px 8px var(--shadow-glow);
   }
 `;

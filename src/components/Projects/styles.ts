@@ -20,7 +20,7 @@ export const ProjectItem = styled.li`
   height: 230px;
   border-radius: var(--border-radius);
   overflow: hidden;
-  border: 1px solid var(--text-secondary);
+  border: 1px solid var(--text-secondary-light);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -43,6 +43,10 @@ export const ProjectItem = styled.li`
     z-index: 1;
   }
 
+  &:hover {
+    border-color: var(--secondary);
+  }
+
   &:hover::before {
     background: var(--overlay-dark-light);
   }
@@ -58,7 +62,7 @@ export const ProjectHeader = styled.p`
   border-radius: var(--border-radius);
   font-family: var(--font-primary);
   font-size: var(--font-size-xs);
-  color: var(--text-glow);
+  color: var(--secondary);
   font-weight: var(--font-weight-semibold);
   flex: 1;
   height: 40px;
@@ -69,11 +73,10 @@ export const ProjectHeader = styled.p`
 
 export const ProjectDetailWrapper = styled.div`
   backdrop-filter: blur(8px);
-  background: var(--overlay-backdrop);
+  background-color: var(--primary);
   display: flex;
   justify-content: space-between;
-  gap: 20px;
-  gap: 15px;
+  gap: var(--spacing-lg);
   padding: 10px;
   border-radius: var(--border-radius);
 
@@ -88,17 +91,16 @@ export const ProjectDetailWrapper = styled.div`
     width: 40px;
     height: 40px;
     border-radius: 50px;
-    background-color: var(--text-glow);
+    background-color: var(--secondary);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--bg-primary);
+    color: var(--primary);
     transition: all 0.3s ease;
     text-decoration: none;
 
     &:hover {
       transform: scale(1.1);
-      box-shadow: 0 2px 8px var(--shadow-glow);
     }
   }
 `;

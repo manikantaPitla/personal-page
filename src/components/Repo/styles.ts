@@ -12,17 +12,16 @@ export const RepoCard = styled.li`
 
   &:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 8px var(--shadow-glow);
-    border-color: var(--text-glow);
+    border-color: var(--secondary);
   }
 `;
 
 export const RepoName = styled.h4`
   font-weight: 500;
-  font-size: 14px;
+  font-size: var(--font-size-sm);
 `;
 export const RepoFullName = styled.p`
-  font-size: 12px;
+  font-size: var(--font-size-xs);
 `;
 export const RepoTopFlex = styled.div`
   display: flex;
@@ -49,7 +48,7 @@ export const LanguageList = styled.div`
 `;
 
 export const LanguageBar = styled.div`
-  margin-top: 10px;
+  margin-top: var(--spacing-md);
   width: 100%;
   display: flex;
   overflow: hidden;
@@ -71,10 +70,13 @@ export const LanguagePercentageItem = styled.div`
     border-radius: 50%;
   }
 
-  font-size: 10px;
+  font-size: var(--font-size-xs);
 `;
 
-// Custom reusable styling -----------------------------
+export const LoaderContainer = styled.div`
+  display: flex;
+  justify-content: center;
+`;
 
 export const CustomButton = styled.button`
   outline: none;
@@ -83,7 +85,7 @@ export const CustomButton = styled.button`
   border-radius: var(--border-radius);
   background: var(--bg-card);
   border: 1px solid var(--border-primary);
-  color: var(--text-glow);
+  color: var(--secondary);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -93,14 +95,12 @@ export const CustomButton = styled.button`
 
   &:hover {
     background: var(--bg-card-hover);
-    border-color: var(--text-glow);
+    border-color: var(--secondary);
     transform: translateY(-2px);
-    box-shadow: 0 2px 8px var(--shadow-glow);
   }
 
   &:active {
     transform: translateY(0);
-    box-shadow: 0 1px 4px var(--shadow-glow-subtle);
   }
 
   svg {
@@ -116,6 +116,5 @@ export const CustomBadge = styled.div`
   border: 1px solid var(--text-secondary-light);
   padding: 5px 10px;
   border-radius: var(--border-radius);
-
-  font-size: 10px;
+  font-size: var(--font-size-xs);
 `;

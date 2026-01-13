@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const InputEl = styled.input`
   background-color: transparent;
   outline: none;
-  border: 1px solid var(--text-glow);
+  border: 1px solid var(--secondary);
   padding: 10px 12px;
   color: var(--text-secondary-light);
   border-radius: var(--border-radius);

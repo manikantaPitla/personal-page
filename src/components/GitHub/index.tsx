@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { UiButton, UiHeading, UiSection } from "../ui";
-import { ButtonWrapper, ErrorContainer, GitProfileWrapper, ProfileCard, ProfileWrapper } from "./styles";
+import { ButtonWrapper, ErrorContainer, ErrorMessage, GitProfileWrapper, ProfileCard, ProfileWrapper } from "./styles";
 import { RingLoader } from "../ui/Loaders";
 import Repository from "../Repository";
 import useFetchData from "../../hooks/useFetchData";
@@ -32,9 +32,7 @@ const GitHub = () => {
           <ErrorContainer>
             <p>{getErrorMessage(error)}</p>
             {!isOnline && (
-              <p style={{ color: "var(--status-error)", fontSize: "14px", marginTop: "10px" }}>
-                📡 You appear to be offline. Please check your internet connection.
-              </p>
+              <ErrorMessage>📡 You appear to be offline. Please check your internet connection.</ErrorMessage>
             )}
             <UiButton
               onClick={() => {

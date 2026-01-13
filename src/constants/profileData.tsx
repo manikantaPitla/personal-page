@@ -18,10 +18,10 @@ import {
   SiRedux,
   SiFirebase,
   SiTailwindcss,
+  SiAmazon,
 } from "react-icons/si";
 import type { ProfileData } from "../types/profile";
 
-// Profile data constants
 export const PROFILE_DATA: ProfileData = {
   name: "Manikanta Pitla",
   initials: "MP",
@@ -85,6 +85,7 @@ export const PROFILE_DATA: ProfileData = {
     { name: "Git", icon: SiGit as React.ComponentType<any> },
     { name: "GitHub", icon: SiGithub as React.ComponentType<any> },
     { name: "Linux", icon: SiLinux as React.ComponentType<any> },
+    { name: "AWS", icon: SiAmazon as React.ComponentType<any> },
   ],
   githubUrl: "https://api.github.com/users/manikantaPitla",
   projects: [

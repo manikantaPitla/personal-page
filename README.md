@@ -215,12 +215,14 @@ Edit `src/constants/profileData.tsx` to customize:
 
 ### Customize Colors and Styling
 
-1. **Color Scheme**: Edit `src/constants/colors.ts`
-   - Primary colors, accent colors, language colors
-   - Update the `accent.glow` color to change the theme
+1. **Color Scheme**: Edit `src/styles/cssVariables.css`
+   - Primary colors, accent colors, overlay colors, status colors
+   - Update `--text-glow` to change the primary accent color
+   - All color variables are defined here
 
-2. **CSS Variables**: Edit `src/styles/cssVariables.css`
-   - Font sizes, spacing, border radius, etc.
+2. **Language Colors**: Edit `src/constants/colors.ts`
+   - Only contains language colors for GitHub repository language badges
+   - Used dynamically for displaying programming language colors
 
 3. **Global Styles**: Edit `src/styles/globalStyles.css`
    - Base styles, animations, scrollbar styling

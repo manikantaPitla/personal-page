@@ -10,7 +10,7 @@ export const EduContent = styled.div`
 export const EduTimeLine = styled.ul`
   height: 500px;
   width: 2px;
-  background-color: var(--overlay-white);
+  background-color: var(--secondary);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -22,7 +22,7 @@ export const EduItem = styled.li`
   height: 10px !important;
   width: 10px !important;
   border-radius: 50px;
-  background-color: var(--text-glow);
+  background-color: var(--secondary);
   position: relative;
   display: flex;
   justify-content: flex-start;
@@ -50,10 +50,10 @@ export const EduItem = styled.li`
         }
       }
 
-      font-size: 12px;
+      font-size: var(--font-size-xs);
 
       @media screen and (min-width: 768px) {
-        font-size: 14px;
+        font-size: var(--font-size-sm);
       }
     }
   }
@@ -63,7 +63,7 @@ export const EduPara = styled.p`
   line-height: normal;
   text-align: inherit;
   margin-bottom: 5px;
-  font-size: 16px;
+  font-size: var(--font-size-base);
   color: var(--text-secondary);
 
   &.edu-title {
@@ -71,7 +71,7 @@ export const EduPara = styled.p`
   }
 
   @media screen and (max-width: 500px) {
-    font-size: 14px;
+    font-size: var(--font-size-sm);
     line-height: 22px;
   }
 `;

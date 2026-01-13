@@ -2,6 +2,7 @@ import { useMemo } from "react";
 import {
   CustomBadge,
   CustomButton,
+  LoaderContainer,
   RepoBottomFlex,
   RepoCard,
   RepoFullName,
@@ -60,9 +61,9 @@ const Repo = ({ repoData }: RepoProps) => {
         </div>
 
         {loading ? (
-          <div style={{ display: "flex", justifyContent: "center" }}>
+          <LoaderContainer>
             <LineLoader />
-          </div>
+          </LoaderContainer>
         ) : (
           <>
             {languagePercentages.length > 0 && (

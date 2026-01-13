@@ -1,5 +1,5 @@
 import { UiButton, UiHeading, UiPara } from "../ui";
-import { ErrorContainer, LoadingContainer, RepoContainer } from "./styles";
+import { ErrorContainer, ErrorMessage, LoadingContainer, RepoContainer } from "./styles";
 import Repo from "../Repo";
 import useFetchData from "../../hooks/useFetchData";
 import { useNetworkStatus } from "../../hooks/useNetworkStatus";
@@ -27,9 +27,9 @@ const Repository = ({ repoUrl }: RepositoryProps) => {
         <ErrorContainer>
           <p>{getErrorMessage(error)}</p>
           {!isOnline && (
-            <p style={{ color: "var(--status-error)", fontSize: "14px", marginTop: "10px" }}>
+            <ErrorMessage>
               📡 You appear to be offline. Please check your internet connection.
-            </p>
+            </ErrorMessage>
           )}
           <UiButton
             onClick={() => {

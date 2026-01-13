@@ -21,7 +21,7 @@ export const MenuBarEl = styled.div<MenuBarProps>`
     position: absolute;
     height: 2px;
     width: 100%;
-    background: var(--text-glow);
+    background: var(--secondary);
     border-radius: 2px;
     opacity: 1;
     left: 0;
@@ -29,28 +29,28 @@ export const MenuBarEl = styled.div<MenuBarProps>`
     transition: 0.25s ease-in-out;
 
     &:nth-child(1) {
-      top: ${(props) => (props.$isOpen ? "13.5px" : "3px")};
+      top: ${(props) => (props.$isOpen ? "14px" : "4px")};
       width: ${(props) => (props.$isOpen ? "0%" : "100%")};
       left: ${(props) => (props.$isOpen ? "50%" : "0%")};
     }
 
     &:nth-child(2) {
-      top: ${(props) => (props.$isOpen ? "13.5px" : "13.5px")};
+      top: ${(props) => (props.$isOpen ? "14px" : "14px")};
       transform: ${(props) => (props.$isOpen ? "rotate(45deg)" : "rotate(0deg)")};
     }
 
     &:nth-child(3) {
-      top: ${(props) => (props.$isOpen ? "13.5px" : "24px")};
+      top: ${(props) => (props.$isOpen ? "14px" : "24px")};
       transform: ${(props) => (props.$isOpen ? "rotate(-45deg)" : "rotate(0deg)")};
     }
   }
 
   &:hover div {
-    background: var(--text-glow);
+    background: var(--secondary);
   }
 
   &:focus {
-    outline: 2px solid var(--text-glow);
+    outline: 2px solid var(--secondary);
     outline-offset: 2px;
   }
 `;

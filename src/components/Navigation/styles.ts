@@ -15,7 +15,7 @@ export const Nav = styled.nav`
   align-items: center;
 
   .show-or-hide {
-    background-color: var(--overlay-backdrop-light);
+    background-color: var(--primary);
     height: 100vh !important;
     transition:
       height 0.4s ease,
@@ -33,15 +33,11 @@ export const Nav = styled.nav`
       }
     }
   }
-
-  .active {
-    color: var(--text-glow);
-  }
 `;
 
 export const Logo = styled.div`
   flex-shrink: 0;
-  border: 2px solid var(--text-glow);
+  border: 2px solid var(--secondary);
   height: 45px;
   width: 45px;
   display: flex;
@@ -68,17 +64,48 @@ export const NavLinks = styled.ul`
     font-size: var(--font-size-sm);
     font-weight: var(--font-weight-medium);
     letter-spacing: var(--letter-spacing-wide);
-    padding: 0 15px;
-    color: var(--text-secondary-light);
+    padding: 8px;
+    color: var(--text-secondary);
     cursor: pointer;
     transition: color 0.3s ease;
 
+    a {
+      display: block;
+      padding: 4px 8px;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--secondary);
+      transition: width 0.3s ease;
+    }
+
     &:hover {
-      color: var(--text-glow);
+      color: var(--secondary);
+
+      a::after {
+        width: 100%;
+      }
+    }
+
+    a.active {
+      color: var(--secondary);
+    }
+
+    a.active::after {
+      width: 100%;
     }
 
     span {
-      color: var(--text-glow);
+      color: var(--secondary);
     }
   }
 
@@ -92,7 +119,7 @@ export const NavLinks = styled.ul`
     top: 0;
     left: 0;
     width: 100%;
-    background-color: var(--overlay-backdrop-light);
+    background-color: var(--primary);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     flex-direction: column;
@@ -110,17 +137,17 @@ export const NavLinks = styled.ul`
       pointer-events: none;
 
       a {
-        color: var(--text-secondary-light) !important;
+        color: var(--secondary) !important;
         font-weight: var(--font-weight-medium);
         transition: color 0.3s ease;
         pointer-events: none;
 
         &:hover {
-          color: var(--text-glow) !important;
+          color: var(--secondary) !important;
         }
 
         span {
-          color: var(--text-glow) !important;
+          color: var(--secondary) !important;
         }
       }
 

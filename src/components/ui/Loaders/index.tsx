@@ -11,7 +11,7 @@ const loaderWrapperStyle: CSSProperties = {
 const ringStyle: CSSProperties = {
   width: "30px",
   height: "30px",
-  border: "3px solid rgba(255, 255, 255, 0.1)",
+  border: "3px solid var(--overlay-white-light)",
   borderTopColor: "var(--text-secondary)",
   borderRadius: "50%",
   animation: "ui-spin 1s linear infinite",
@@ -21,7 +21,7 @@ const lineStyle: CSSProperties = {
   width: "250px",
   height: "4px",
   borderRadius: "9999px",
-  background: "linear-gradient(90deg, rgba(255,255,255,0.1), var(--text-secondary), rgba(255,255,255,0.1))",
+  background: "linear-gradient(90deg, var(--overlay-white-light), var(--text-secondary), var(--overlay-white-light))",
   animation: "ui-pulse 1.5s ease-in-out infinite",
 };
 

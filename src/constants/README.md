@@ -1,62 +1,65 @@
 # Color System Documentation
 
-This directory contains the centralized color system for the personal portfolio project.
+This directory contains the color system for the personal portfolio project.
 
 ## Files
 
-- `colors.js` - Centralized color definitions and helper functions
+- `colors.ts` - Language colors for GitHub repositories (dynamic colors)
+
+## Color System Architecture
+
+The color system is split into two parts:
+
+1. **CSS Variables** (`src/styles/cssVariables.css`) - Single source of truth for all static colors
+2. **Language Colors** (`src/constants/colors.ts`) - Dynamic colors for GitHub language badges
 
 ## Usage
 
-### CSS Variables
+### CSS Variables (Primary Method)
 
 All colors are available as CSS custom properties (variables) in your styled components:
 
 ```css
 .my-component {
-  background-color: var(--bg-primary);
+  background-color: var(--primary);
   color: var(--text-primary);
   border: 1px solid var(--border-primary);
-  box-shadow: 0 2px 8px var(--shadow-glow);
+  box-shadow: 0 2px 4px var(--shadow-glow-subtle);
 }
 ```
 
-### JavaScript Import
+**Location**: `src/styles/cssVariables.css`
 
-For programmatic access to colors (like language colors):
+### Language Colors (Dynamic)
 
-```javascript
-import { colors, getLanguageColor } from "../constants/colors";
+For programmatic access to language colors (used in GitHub repository components):
 
-// Get a specific color
-const primaryBg = colors.primary.bg;
+```typescript
+import { getLanguageColor } from "../constants/colors";
 
-// Get language color
+// Get language color dynamically
 const jsColor = getLanguageColor("JavaScript");
+const pythonColor = getLanguageColor("Python");
 ```
 
-## Color Categories
+**Location**: `src/constants/colors.ts`
+
+## Color Categories (CSS Variables)
 
 ### Primary Colors
 
-- `--bg-primary` - Main background color
+- `--primary` - Main background color
 - `--text-primary` - Primary text color (white)
 - `--text-secondary` - Secondary text color (light gray)
 - `--text-secondary-light` - Lighter secondary text
 
-### Accent/Glow Colors
+### Accent Colors
 
-- `--text-glow` - Primary accent color (blue)
-- `--text-glow-alt-1` - Alternative accent (green)
-- `--text-glow-alt-2` - Alternative accent (cyan)
-- `--text-glow-alt-3` - Alternative accent (orange)
+- `--secondary` - Secondary/accent color
 
 ### Status Colors
 
 - `--status-error` - Error states
-- `--status-success` - Success states
-- `--status-warning` - Warning states
-- `--status-info` - Info states
 
 ### Overlay Colors
 
@@ -64,26 +67,37 @@ const jsColor = getLanguageColor("JavaScript");
 - `--overlay-dark-light` - Light dark overlay
 - `--overlay-backdrop` - Backdrop overlay
 - `--overlay-backdrop-light` - Light backdrop overlay
+- `--overlay-navigation` - Navigation overlay
+- `--overlay-white` - White overlay
 
 ### Shadow Colors
 
-- `--shadow-glow` - Primary glow shadow
-- `--shadow-glow-light` - Light glow shadow
 - `--shadow-glow-subtle` - Subtle glow shadow
+
+### Border Colors
+
+- `--border-primary` - Primary border
+
+### Background Colors
+
+- `--bg-card` - Card background
+- `--bg-card-hover` - Card hover background
+- `--bg-github` - GitHub card background
+- `--bg-github-text` - GitHub card text
+- `--bg-skills-text` - Skills text color
 
 ## Changing Colors
 
 To change the color scheme:
 
 1. **For CSS variables**: Update the values in `src/styles/cssVariables.css`
-2. **For JavaScript colors**: Update the values in `src/constants/colors.js`
-
-Both files are synchronized, so changes in one should be reflected in the other.
+2. **For language colors**: Update the values in `src/constants/colors.ts`
 
 ## Benefits
 
-- **Centralized Management**: All colors in one place
+- **Centralized Management**: All colors in one place (CSS variables)
 - **Easy Theming**: Change the entire color scheme by updating variables
 - **Consistency**: Ensures consistent color usage across components
 - **Maintainability**: Easy to update and maintain
-- **Type Safety**: JavaScript colors are organized in a structured object
+- **Performance**: CSS variables are more performant than JavaScript color objects
+- **Dynamic Support**: Language colors available for programmatic use

@@ -44,11 +44,11 @@ export const ProfileCard = styled.div`
   }
 
   h3 {
-    font-size: 20px;
+    font-size: var(--font-size-xl);
   }
 
   p {
-    font-size: 14px;
+    font-size: var(--font-size-sm);
     color: var(--text-secondary);
   }
 `;
@@ -74,6 +74,12 @@ export const ErrorContainer = styled.div`
   }
 
   p {
-    font-size: 14px;
+    font-size: var(--font-size-sm);
   }
+`;
+
+export const ErrorMessage = styled.p`
+  color: var(--status-error);
+  font-size: var(--font-size-sm);
+  margin-top: var(--spacing-md);
 `;

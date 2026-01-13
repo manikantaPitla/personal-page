@@ -93,6 +93,20 @@ const Navigation = () => {
   }, [isMenuOpen]);
 
   useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 768) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
     const menuElement = menuLinks.current;
     if (!menuElement) return;
 
@@ -129,7 +143,8 @@ const Navigation = () => {
                     scrollToSection(section);
                   }}
                 >
-                  <span>0{index + 1}.</span> {section.charAt(0).toUpperCase() + section.slice(1)}
+                  <span className={activeSection === section ? "index" : ""}>0{index + 1}.</span>{" "}
+                  {section.charAt(0).toUpperCase() + section.slice(1)}
                 </a>
               </li>
             ))}

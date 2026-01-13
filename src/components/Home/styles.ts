@@ -43,6 +43,11 @@ export const SideContentWrapper = styled.div`
     height: 100px;
   }
 
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
   @media screen and (max-width: 500px) {
     display: none;
   }

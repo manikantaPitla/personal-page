@@ -15,7 +15,7 @@ export const ProfileWrapper = styled.div`
   flex-direction: column;
 
   p:nth-child(1) {
-    color: var(--text-glow);
+    color: var(--secondary);
   }
 `;
 

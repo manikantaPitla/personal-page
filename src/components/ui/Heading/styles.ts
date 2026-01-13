@@ -9,6 +9,6 @@ export const HeadingEl = styled.h2`
   margin-bottom: 20px;
 
   span {
-    color: var(--text-glow);
+    color: var(--secondary);
   }
 `;

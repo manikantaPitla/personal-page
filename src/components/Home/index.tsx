@@ -51,9 +51,7 @@ const Home = () => {
 
         <SideContentWrapper>
           <p>
-            <a href={`mailto:${PROFILE_DATA.email}`} style={{ color: "inherit", textDecoration: "none" }}>
-              {PROFILE_DATA.email}
-            </a>
+            <a href={`mailto:${PROFILE_DATA.email}`}>{PROFILE_DATA.email}</a>
           </p>
           <hr />
         </SideContentWrapper>

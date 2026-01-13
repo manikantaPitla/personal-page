@@ -5,6 +5,6 @@ export const FooterContainer = styled.footer`
   padding: 30px 0;
 
   p {
-    font-size: 14px;
+    font-size: var(--font-size-sm);
   }
 `;
