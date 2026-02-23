@@ -15,10 +15,11 @@ const ParticlesComponent: React.FC<ParticleProps> = ({ imageSrc }) => {
   const raycasterRef = useRef(new THREE.Raycaster());
 
   useEffect(() => {
-    if (!containerRef.current) return;
+    const currentContainer = containerRef.current;
+    if (!currentContainer) return;
 
-    const width = containerRef.current.clientWidth;
-    const height = containerRef.current.clientHeight;
+    const width = currentContainer.clientWidth;
+    const height = currentContainer.clientHeight;
 
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(50, width / height, 1, 10000);
@@ -27,7 +28,7 @@ const ParticlesComponent: React.FC<ParticleProps> = ({ imageSrc }) => {
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setSize(width, height);
-    containerRef.current.appendChild(renderer.domElement);
+    currentContainer.appendChild(renderer.domElement);
 
     const fovHeight = 2 * Math.tan((camera.fov * Math.PI) / 180 / 2) * camera.position.z;
 
@@ -52,7 +53,7 @@ const ParticlesComponent: React.FC<ParticleProps> = ({ imageSrc }) => {
     };
 
     const onMouseMove = (event: MouseEvent) => {
-      const rect = containerRef.current!.getBoundingClientRect();
+      const rect = currentContainer.getBoundingClientRect();
       mouseRef.current.x = ((event.clientX - rect.left) / width) * 2 - 1;
       mouseRef.current.y = -((event.clientY - rect.top) / height) * 2 + 1;
 
@@ -68,9 +69,9 @@ const ParticlesComponent: React.FC<ParticleProps> = ({ imageSrc }) => {
     };
 
     const handleResize = () => {
-      if (!containerRef.current) return;
-      const newWidth = containerRef.current.clientWidth;
-      const newHeight = containerRef.current.clientHeight;
+      if (!currentContainer) return;
+      const newWidth = currentContainer.clientWidth;
+      const newHeight = currentContainer.clientHeight;
 
       camera.aspect = newWidth / newHeight;
       camera.updateProjectionMatrix();
@@ -88,8 +89,8 @@ const ParticlesComponent: React.FC<ParticleProps> = ({ imageSrc }) => {
       window.removeEventListener("mousemove", onMouseMove);
       window.removeEventListener("resize", handleResize);
       if (requestRef.current) cancelAnimationFrame(requestRef.current);
-      if (containerRef.current && renderer.domElement) {
-        containerRef.current.removeChild(renderer.domElement);
+      if (currentContainer && renderer.domElement) {
+        currentContainer.removeChild(renderer.domElement);
       }
       particles.destroy();
       renderer.dispose();
