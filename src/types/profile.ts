@@ -14,6 +14,7 @@ export interface EducationEntry {
   duration: string;
   cgpa?: string;
   role?: string;
+  type: "WORK" | "COURSE" | "EDUCATION";
 }
 
 export interface Skill {

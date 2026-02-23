@@ -1,6 +1,7 @@
 import { EduContent, EduItem, EduPara, EduTimeLine } from "./styles";
 import { UiHeading, UiSection } from "../ui";
 import { PROFILE_DATA, SECTION_HEADINGS } from "../../constants";
+import { formatDurationWithTotal } from "../../utils/dateUtils";
 
 const Education = () => {
   return (
@@ -12,13 +13,15 @@ const Education = () => {
       <EduContent>
         <EduTimeLine>
           {PROFILE_DATA.education.map((eachEdu, index) => {
-            const { name, duration, cgpa, role } = eachEdu;
+            const { name, duration, cgpa, role, type } = eachEdu;
 
             return (
               <EduItem key={index}>
                 <div>
                   <EduPara className="edu-title">{name}</EduPara>
-                  <EduPara>{duration}</EduPara>
+                  <EduPara>
+                    {type === "WORK" || type === "COURSE" ? formatDurationWithTotal(duration) : duration}
+                  </EduPara>
                   <EduPara>{cgpa || role}</EduPara>
                 </div>
               </EduItem>

@@ -44,28 +44,33 @@ export const PROFILE_DATA: ProfileData = {
   education: [
     {
       name: "Maramungala Technologies",
-      duration: "Mar 2025 - Current",
+      duration: "Apr 2025 - Current",
       role: "Role - Full Stack Developer",
+      type: "WORK",
     },
     {
       name: "Full Stack Development - NxtWave",
       duration: "Feb 2023 - Oct 2023",
       cgpa: "CGPA - 8.8",
+      type: "COURSE",
     },
     {
       name: "BSc Computer Science - SSR Degree College, Nizamabad",
       duration: "Jul 2019 - Jun 2022",
       cgpa: "CGPA - 7.48",
+      type: "EDUCATION",
     },
     {
       name: "Intermediate - Kshatriya Junior College, Armoor",
       duration: "Jun 2017 - Mar 2019",
       cgpa: "CGPA - 8.27",
+      type: "EDUCATION",
     },
     {
       name: "SSC - ZPHS, Yergatla ",
       duration: "Jun 2016 - Mar 2017",
       cgpa: "CGPA - 9.0",
+      type: "EDUCATION",
     },
   ],
   skills: [
