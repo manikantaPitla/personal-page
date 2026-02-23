@@ -1,18 +1,17 @@
 import styled from "styled-components";
 
 export const RepoCard = styled.li`
-  border: 1px solid var(--border-color);
   border-radius: var(--border-radius);
   padding: 15px 15px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   transition: all 0.3s ease;
+  box-shadow: var(--elevation-1);
   cursor: pointer;
 
   &:hover {
     transform: translateY(-2px);
-    border-color: var(--secondary);
   }
 `;
 
@@ -84,7 +83,7 @@ export const CustomButton = styled.button`
   padding: 8px;
   border-radius: var(--border-radius);
   background: transparent;
-  border: 1px solid var(--border-color);
+   border: 1px solid var(--border-color);
   color: var(--secondary);
   display: flex;
   justify-content: center;
@@ -95,7 +94,6 @@ export const CustomButton = styled.button`
 
   &:hover {
     background: var(--bg-white);
-    border-color: var(--secondary);
     transform: translateY(-2px);
   }
 
@@ -113,8 +111,9 @@ export const CustomButton = styled.button`
 `;
 
 export const CustomBadge = styled.div`
-  border: 1px solid var(--text-secondary-light);
   padding: 5px 10px;
   border-radius: var(--border-radius);
   font-size: var(--font-size-xs);
+  background: var(--bg-white);
+  box-shadow: var(--elevation-1);
 `;

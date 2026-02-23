@@ -28,6 +28,10 @@ body {
   width: 0;
 }
 
+button {
+  border: none;
+}
+
 .App {
   height: 100vh;
   display: flex;

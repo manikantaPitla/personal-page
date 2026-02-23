@@ -20,7 +20,6 @@ export const ProjectItem = styled.li`
   height: 230px;
   border-radius: var(--border-radius);
   overflow: hidden;
-  border: 1px solid var(--border-color);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -29,6 +28,7 @@ export const ProjectItem = styled.li`
   flex-direction: column;
   justify-content: flex-end;
   transition: all 0.3s ease;
+  box-shadow: var(--elevation-1);
   cursor: pointer;
 
   &::before {
@@ -44,7 +44,7 @@ export const ProjectItem = styled.li`
   }
 
   &:hover {
-    border-color: var(--secondary);
+    transform: translateY(-2px);
   }
 
   &:hover::before {
@@ -61,7 +61,7 @@ export const ProjectHeader = styled.p`
   width: fit-content;
   border-radius: var(--border-radius);
   font-family: var(--font-primary);
-  font-size: var(--font-size-xs);
+  font-size: var(--font-size-sm);
   color: var(--secondary);
   font-weight: var(--font-weight-semibold);
   flex: 1;

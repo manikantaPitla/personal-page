@@ -5,6 +5,10 @@ export interface AboutDetails {
   profileDescription: string[];
 }
 
+export interface BannerDetails {
+  image: string;
+}
+
 export interface EducationEntry {
   name: string;
   duration: string;
@@ -35,6 +39,7 @@ export interface ProfileData {
   description: string;
   resume: string;
   email: string;
+  banner: BannerDetails;
   about: AboutDetails;
   education: EducationEntry[];
   skills: Skill[];

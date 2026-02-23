@@ -4,7 +4,8 @@ export const GitProfileWrapper = styled.div`
   background-color: var(--bg-white);
   border-radius: var(--border-radius);
   padding: 20px;
-  color: var(--text-secondary);
+  color: #212121;
+  box-shadow: var(--elevation-1);
   min-height: 208px;
 `;
 
@@ -49,7 +50,7 @@ export const ProfileCard = styled.div`
 
   p {
     font-size: var(--font-size-sm);
-    color: var(--text-secondary);
+    color: #212121;
   }
 `;
 
@@ -65,8 +66,10 @@ export const ButtonWrapper = styled.div`
 export const ErrorContainer = styled.div`
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 10px;
   flex-direction: column;
+  min-height: 168px;
 
   button {
     width: fit-content;
@@ -79,7 +82,7 @@ export const ErrorContainer = styled.div`
 `;
 
 export const ErrorMessage = styled.p`
-  color: var(--status-error);
+  color: #212121;
   font-size: var(--font-size-sm);
   margin-top: var(--spacing-md);
 `;

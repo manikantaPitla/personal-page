@@ -1,10 +1,12 @@
 import { Main, ProfileWrapper, UserTitle } from "./styles";
 import { UiButton, UiPara } from "../ui";
 import { PROFILE_DATA } from "../../constants";
+import ParticlesComponent from "../particles";
 
 const Introduction = () => {
   return (
     <Main id="introduction">
+      <ParticlesComponent imageSrc={PROFILE_DATA.banner.image} />
       <ProfileWrapper>
         <UiPara>Hi, my name is</UiPara>
         <UserTitle>{PROFILE_DATA.name}</UserTitle>

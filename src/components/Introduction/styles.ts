@@ -8,11 +8,13 @@ export const Main = styled.section`
   justify-content: center;
   padding-top: 80px;
   box-sizing: border-box;
+  position: relative;
 `;
 
 export const ProfileWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  z-index: 1;
 
   p:nth-child(1) {
     color: var(--secondary);

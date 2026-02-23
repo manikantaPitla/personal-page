@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <FooterContainer as="footer">
       <UiPara>
-        Developed by <b>{PROFILE_DATA.name}</b> | Last updated on 10-01-2026
+        Developed by <b>{PROFILE_DATA.name}</b> | Last updated on 13-01-2026
       </UiPara>
     </FooterContainer>
   );

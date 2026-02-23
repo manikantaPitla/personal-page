@@ -2,10 +2,10 @@ import styled from "styled-components";
 
 export const ButtonEl = styled.button`
   padding: 10px 30px;
-  border: 1px solid var(--secondary);
   background-color: var(--secondary);
   color: var(--primary);
   border-radius: var(--border-radius);
+  box-shadow: var(--elevation-1);
   outline: none;
   cursor: pointer;
   font-family: var(--font-primary);

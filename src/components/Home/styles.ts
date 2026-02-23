@@ -4,10 +4,10 @@ export const MainContentWrapper = styled.div`
   flex: 1;
   display: flex;
   overflow-y: auto;
-  height: 100vh;
-`;
-
-export const MiddleContentWrapper = styled.div`
+  `;
+  
+  export const MiddleContentWrapper = styled.div`
+  height: 110vh !important;
   flex: 1;
   padding: 0 20px;
   overflow-y: auto;
