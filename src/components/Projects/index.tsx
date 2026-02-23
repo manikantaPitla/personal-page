@@ -18,7 +18,8 @@ const Projects = () => {
           {PROFILE_DATA.projects.map((project, index) => {
             const { projectName, imageUrl, githubRepoUrl, websiteUrl } = project;
             return (
-              <ProjectItem key={index} style={{ backgroundImage: `url(${imageUrl})` }}>
+              <ProjectItem key={index}>
+                <img src={imageUrl} alt={projectName} className="project-image" loading="lazy" />
                 <ProjectDetailWrapper>
                   <ProjectHeader>{projectName}</ProjectHeader>
                   <div className="project-links">

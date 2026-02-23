@@ -20,9 +20,6 @@ export const ProjectItem = styled.li`
   height: 230px;
   border-radius: var(--border-radius);
   overflow: hidden;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -30,6 +27,17 @@ export const ProjectItem = styled.li`
   transition: all 0.3s ease;
   box-shadow: var(--elevation-1);
   cursor: pointer;
+
+  .project-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    transition: transform 0.3s ease;
+  }
 
   &::before {
     content: "";
@@ -45,6 +53,10 @@ export const ProjectItem = styled.li`
 
   &:hover {
     transform: translateY(-2px);
+
+    .project-image {
+      transform: scale(1.05);
+    }
   }
 
   &:hover::before {

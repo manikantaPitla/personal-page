@@ -17,7 +17,7 @@ const SocialLinks = ({ isrender = false }: SocialLinksProps) => {
   const socialLinksList = PROFILE_DATA.contact.map((contact) => {
     const IconComponent = iconMap[contact.name] || FiGithub;
     return {
-    name: contact.name,
+      name: contact.name,
       IconComponent,
       link: contact.url,
     };
@@ -35,21 +35,29 @@ const SocialLinks = ({ isrender = false }: SocialLinksProps) => {
                 target="_blank"
                 rel="noreferrer"
                 title={linkItem.name}
+                aria-label={linkItem.name}
               >
                 <IconWrapper>
                   <IconComponent />
                 </IconWrapper>
-              <LinkName>{linkItem.name}</LinkName>
-            </SocialLinkWrapper>
+                <LinkName>{linkItem.name}</LinkName>
+              </SocialLinkWrapper>
             );
           })
         : socialLinksList.map((linkItem) => {
             const { IconComponent } = linkItem;
             return (
-            <LinkEl key={linkItem.name} href={linkItem.link} target="_blank" rel="noreferrer" title={linkItem.name}>
+              <LinkEl
+                key={linkItem.name}
+                href={linkItem.link}
+                target="_blank"
+                rel="noreferrer"
+                title={linkItem.name}
+                aria-label={linkItem.name}
+              >
                 <IconComponent />
-              {isrender && <LinkName>{linkItem.name}</LinkName>}
-            </LinkEl>
+                {isrender && <LinkName>{linkItem.name}</LinkName>}
+              </LinkEl>
             );
           })}
     </>
